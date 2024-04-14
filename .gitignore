@@ -1,0 +1,28 @@
+# Node.js / NPM
+node_modules/
+
+# Vite.js
+dist/
+.cache/
+yarn-error.log
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual Environment
+venv/
+ENV/
+
+# IDE
+.vscode/
+
+# Compiled Python files
+*.pyc
+
+# macOS
+.DS_Store
+
+# Editor
+*.swp
+*~
