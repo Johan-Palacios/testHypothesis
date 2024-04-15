@@ -1,0 +1,47 @@
+import {Input} from ''
+const testHipotesis = {
+  interestParam: [
+    {
+      type: 'mean',
+      name: 'μ (Media Poblacional)',
+      cases: [
+        {
+          name: 'Deviación Estandar Conocida',
+          caseDefinition: 'x ~ N(μ, σ)',
+          image: 'mean_know_dev_stand.png',
+          statisticsTest: '',
+          endpoint: 'know_dev_estand',
+          reqData: {
+            mean_sample: ,
+            mean_population: 'Media Poblacional',
+            dev_estand: 'Desviación Standard',
+            n: 'Muestra',
+            nc: 'Nivel de Confianza'
+          }
+        }
+      ]
+    },
+    {
+      type: 'proportion',
+      name: 'p (Proporción Poblacional)',
+      cases: [
+        {
+          name: 'Con n >= a 30',
+          caseDefinition: 'x ~ Bernoulli(p)'
+        }
+      ]
+    },
+    {
+      type: 'standev',
+      name: 'σ² (Desviación Estándar )',
+      cases: [
+        {
+          name: 'x ~ N(μ, σ)',
+          caseDefinition: 'x ~ N(μ, σ)'
+        }
+      ]
+    }
+  ]
+}
+
+export default testHipotesis
