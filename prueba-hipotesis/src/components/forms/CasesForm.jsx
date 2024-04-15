@@ -30,7 +30,7 @@ function InterestParamForm () {
     const imagePath = selectedCaseInfo?.image ?? ''
     const apiEndPoint = selectedCaseInfo?.endpoint ?? ''
     const reqData = selectedCaseInfo?.reqData ?? {}
-    updateHipotesisDefinition({ interestCase, imageCase: imagePath, apiEndPoint, reqData })
+    updateHipotesisDefinition({ interestCase, imageCase: imagePath, apiEndPoint, reqData, inputdata: {} })
   }
   return (
     <>

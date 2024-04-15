@@ -4,7 +4,7 @@ import {
   Container
 } from '@chakra-ui/react'
 import InterestParamForm from './InterestParamForm.jsx'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import CasesForm from './CasesForm.jsx'
 import HipotesisAppContext from '../../context/hipotesisAppContext.jsx'
 import ReqDataForm from './ReqDataForm.jsx'

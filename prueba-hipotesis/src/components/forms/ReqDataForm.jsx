@@ -1,6 +1,7 @@
-import { Stack, Input, FormLabel } from '@chakra-ui/react'
+import { Stack } from '@chakra-ui/react'
 import HipotesisAppContext from '../../context/hipotesisAppContext.jsx'
 import React, { useContext } from 'react'
+import { InputHyphotesis } from './HyphotesisInputForm.jsx'
 
 const ReqDataForm = () => {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
@@ -8,16 +9,19 @@ const ReqDataForm = () => {
   return (
     <>
       <Stack>
-        {Object.values(reqData).map((componentProps, _) => {
-          return (
-            <React.Fragment key={componentProps.name + 'fragment'}>
-              <FormLabel>{componentProps.name}</FormLabel>
-              <Input {...componentProps} />
-            </React.Fragment>
-          )
-        })}
+        {
+          Object.entries(reqData).map(([inputKey, propsInput]) => {
+            return (
+              <InputHyphotesis
+                key={inputKey}
+                propertyInput={inputKey}
+                props={propsInput}
+                label={propsInput.name}
+              />
+            )
+          })
+        }
       </Stack>
-
     </>
   )
 }
