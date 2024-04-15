@@ -8,7 +8,8 @@ export const HipotesisProvider = ({ children }) => {
     interestCase: '',
     imageCase: '',
     apiEndPoint: '',
-    reqdata: {}
+    reqdata: {},
+    inputdata: {}
   })
 
   const updateHipotesisDefinition = (newProps) => {
