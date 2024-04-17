@@ -11,7 +11,14 @@ function InterestParamForm () {
   const { updateHipotesisDefinition } = useContext(HipotesisAppContext)
   const changeInterestParam = (ev) => {
     ev.preventDefault()
-    updateHipotesisDefinition({ interestParam: ev.target.value, interestCase: '', imageCase: '' })
+    updateHipotesisDefinition({
+      interestParam: ev.target.value,
+      interestCase: '',
+      imageCase: '',
+      apiEndPoint: '',
+      reqdata: '',
+      inputdata: ''
+    })
   }
   return (
     <>

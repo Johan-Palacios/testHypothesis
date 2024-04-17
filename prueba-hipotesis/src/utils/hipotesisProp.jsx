@@ -22,7 +22,7 @@ const testHipotesis = {
               type: 'number',
               placeholder: 'Ingrese la Media Poblacional Ej. 500'
             },
-            dev_estand:
+            dev_stand:
             {
               name: 'Desviación Estandar',
               type: 'number',

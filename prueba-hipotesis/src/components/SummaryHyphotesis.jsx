@@ -37,6 +37,7 @@ const SumamaryHyphotesis = () => {
                 Parámetro de Interes 🤔:
               </Heading>
               <Text>{interestParamText}</Text>
+              {/* eslint-disable-next-line react/jsx-indent */}
               </>
             : <></>}
           {
@@ -49,6 +50,7 @@ const SumamaryHyphotesis = () => {
                 <Heading as='h4' size='md'>Estadistico de Prueba:</Heading>
                 <Text>{interestCaseText.split(' - ')[1]}</Text>
                 <Image width={250} objectFit='cover' src={`/${imageCase}`} fallbackSrc='/vite.svg' />
+                {/* eslint-disable-next-line react/jsx-indent */}
                 </>
               : <></>
           }

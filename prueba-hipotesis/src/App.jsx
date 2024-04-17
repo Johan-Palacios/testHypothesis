@@ -4,7 +4,7 @@ import MainForm from './components/forms/MainForm.jsx'
 import { Box } from '@chakra-ui/react'
 import SumamaryHyphotesis from './components/SummaryHyphotesis.jsx'
 
-function App() {
+function App () {
   return (
     <>
       <header>

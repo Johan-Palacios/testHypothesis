@@ -9,10 +9,16 @@ export const InputHyphotesis = ({ props, label, propertyInput }) => {
     <>
       <FormLabel>{label}</FormLabel>
       <Input
-        {...props} required onChange={(ev) => {
+        {...props}
+        required
+        onWheel={(ev) => ev.target.blur()}
+        onChange={(ev) => {
           ev.preventDefault()
           updateHipotesisDefinition(
-            { inputdata: { ...hipotesisDefinition.inputdata, [`${propertyInput}`]: ev.target.value } }
+            {
+              inputdata:
+              { ...hipotesisDefinition.inputdata, [`${propertyInput}`]: parseFloat(ev.target.value) }
+            }
           )
         }}
       />
