@@ -8,31 +8,28 @@ import HipotesisAppContext from '../../context/hipotesisAppContext.jsx'
 import CasesForm from './CasesForm.jsx'
 import InterestParamForm from './InterestParamForm.jsx'
 import ReqDataForm from './ReqDataForm.jsx'
-import axios from 'axios'
 
 function MainForm () {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
   const [formData, setFormData] = useState({})
-  useEffect(() => {
-    setFormData(hipotesisDefinition.inputdata)
-  }, [hipotesisDefinition.inputdata])
 
   const handleSubmit = async (ev) => {
     ev.preventDefault()
-    console.log(params)
-    try {
-      const response = await axios.get('http://127.0.0.1:8000/mean/know_dev_estand/', {
-        params: formData,
-        headers: {
-          Accept: 'application/json'
-        }
-      })
-      console.log(response.data)
-    } catch (error) {
-      // Manejo de errores
-      console.error('Error al llamar a la API:', error)
-    }
+    await axios.get('http://127.0.0.1:8000/mean/know_dev_estand/', {
+      params: formData,
+      headers: {
+        Accept: 'application/json'
+      }
+    }).then((response) => setConclusionData({ ...response.data }))
   }
+  useEffect(() => {
+    updateHipotesisConclusion({ ...conclusionData })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [conclusionData])
+
+  useEffect(() => {
+    setFormData(hipotesisDefinition.inputdata)
+  }, [hipotesisDefinition.inputdata])
 
   return (
     <Container display='flex' flexDirection='row' flexWrap='wrap' w='100%' alignSelf='center'>
