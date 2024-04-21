@@ -5,9 +5,12 @@ import {
 } from '@chakra-ui/react'
 import HipotesisAppContext from '../../context/hipotesisAppContext'
 import testHipotesis from '../../utils/hipotesisProp'
+import HipotesisConclusionContext from '../../context/hipotesisConcusionContext'
 
 function InterestParamForm () {
   const { hipotesisDefinition, updateHipotesisDefinition } = useContext(HipotesisAppContext)
+  const { updateHipotesisConclusion } = useContext(HipotesisConclusionContext)
+
   let availableCases
 
   if (hipotesisDefinition.interestParam === testHipotesis.interestParam[0].name) {
@@ -31,6 +34,10 @@ function InterestParamForm () {
     const apiEndPoint = selectedCaseInfo?.endpoint ?? ''
     const reqData = selectedCaseInfo?.reqData ?? {}
     updateHipotesisDefinition({ interestCase, imageCase: imagePath, apiEndPoint, reqData, inputdata: {} })
+    updateHipotesisConclusion({
+      criticPoint: '',
+      observedValue: ''
+    })
   }
   return (
     <>
