@@ -35,7 +35,7 @@ function InterestParamForm () {
   return (
     <>
       <FormLabel>Seleccione Casos</FormLabel>
-      <Select placeholder='Ningun Caso seleccionado' onChange={(ev) => changeCase(ev)}>
+      <Select placeholder='Ningun Caso seleccionado' onChange={(ev) => changeCase(ev)} required>
         {availableCases.map((currentCase) => {
           return (
             <option key={currentCase.name + currentCase.caseDefinition}>
