@@ -3,15 +3,19 @@ import {
   Container,
   FormControl
 } from '@chakra-ui/react'
+import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import HipotesisAppContext from '../../context/hipotesisAppContext.jsx'
+import HipotesisConclusionContext from '../../context/hipotesisConcusionContext.jsx'
 import CasesForm from './CasesForm.jsx'
 import InterestParamForm from './InterestParamForm.jsx'
 import ReqDataForm from './ReqDataForm.jsx'
 
 function MainForm () {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
+  const { updateHipotesisConclusion } = useContext(HipotesisConclusionContext)
   const [formData, setFormData] = useState({})
+  const [conclusionData, setConclusionData] = useState({})
 
   const handleSubmit = async (ev) => {
     ev.preventDefault()
