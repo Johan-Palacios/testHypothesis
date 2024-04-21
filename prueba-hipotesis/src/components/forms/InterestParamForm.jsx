@@ -5,12 +5,18 @@ import {
 } from '@chakra-ui/react'
 import testHipotesis from '../../utils/hipotesisProp'
 import HipotesisAppContext from '../../context/hipotesisAppContext'
-const availableInterestParam = testHipotesis.interestParam
+import HipotesisConclusionContext from '../../context/hipotesisConcusionContext'
 
 function InterestParamForm () {
+  const availableInterestParam = testHipotesis.interestParam
   const { updateHipotesisDefinition } = useContext(HipotesisAppContext)
+  const { updateHipotesisConclusion } = useContext(HipotesisConclusionContext)
   const changeInterestParam = (ev) => {
     ev.preventDefault()
+    updateHipotesisConclusion({
+      criticPoint: '',
+      observedValue: ''
+    })
     updateHipotesisDefinition({
       interestParam: ev.target.value,
       interestCase: '',
