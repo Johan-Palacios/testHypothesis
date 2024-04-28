@@ -14,10 +14,12 @@ import HipotesisConclusionContext from '../../context/hipotesisConcusionContext.
 import CasesForm from './CasesForm.jsx'
 import InterestParamForm from './InterestParamForm.jsx'
 import ReqDataForm from './ReqDataForm.jsx'
+import HipotesisProveFormContext from '../../context/hipotesisProveFormContext.jsx'
 
 function MainForm () {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
   const { updateHipotesisConclusion } = useContext(HipotesisConclusionContext)
+  const { updateHipotesisProveForm } = useContext(HipotesisProveFormContext)
   const [formData, setFormData] = useState({})
   const [conclusionData, setConclusionData] = useState({})
 
