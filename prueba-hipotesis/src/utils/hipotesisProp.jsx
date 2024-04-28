@@ -20,6 +20,7 @@ const testHipotesis = {
             mean_population: {
               name: 'Media Poblacional',
               type: 'number',
+              maininterest: 1,
               placeholder: 'Ingrese la Media Poblacional Ej. 500'
             },
             dev_stand:
