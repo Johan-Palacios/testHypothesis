@@ -93,20 +93,23 @@ function MainForm () {
           {hipotesisDefinition.interestCase !== ''
             ? <>
               <ReqDataForm />
-
-              {/* TODO: Fix Bug Form params in reverse  */}
               <FormLabel marginTop={5}>Nivel de Significancia</FormLabel>
               <Input
                 name='Nivel de Significancia'
                 step={0.01}
-                min={0}
-                max={1}
+                min={0.01}
+                max={0.99}
                 type='number'
                 placeholder='Ingrese Nivel de Significancia'
                 required
                 onWheel={(ev) => ev.target.blur()}
                 onChange={(ev) => handleChangeNs(ev)}
               />
+              {/* eslint-disable-next-line react/jsx-closing-tag-location */}
+            </>
+            : <></>}
+          {ns !== 0 && !isNaN(ns) && ns !== 1
+            ? <>
 
               <FormLabel marginTop={5}>Tipo de Análisis (&lt; &gt;, != )</FormLabel>
               <Select placeholder='Seleccione un tipo de analisis' required onChange={(ev) => handleSelectAnalisis(ev)}>
@@ -116,12 +119,11 @@ function MainForm () {
               </Select>
 
               <Button type='submit' mt={5} colorScheme='blue'>Calcular</Button>
-              {/* eslint-disable-next-line react/jsx-indent */}
-              </>
+
+              {/* eslint-disable-next-line react/jsx-closing-tag-location */}
+            </>
             : <></>}
-
         </FormControl>
-
       </form>
     </Container>
   )
