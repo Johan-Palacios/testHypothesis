@@ -5,7 +5,9 @@ const HipotesisConclusionContext = createContext()
 export const HipotesisConclusionProvider = ({ children }) => {
   const [hipotesisConclusion, setHipotesisConclusion] = useState({
     criticPoint: '',
-    observedValue: ''
+    observedValue: '',
+    analisisType: '',
+    mainInterest: ''
   })
 
   const updateHipotesisConclusion = (newProps) => {
