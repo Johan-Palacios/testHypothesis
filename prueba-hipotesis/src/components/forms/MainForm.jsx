@@ -34,7 +34,6 @@ function MainForm () {
   }
   useEffect(() => {
     updateHipotesisConclusion({ ...conclusionData })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conclusionData])
 
   useEffect(() => {
