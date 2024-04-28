@@ -22,6 +22,30 @@ function MainForm () {
   const { updateHipotesisProveForm } = useContext(HipotesisProveFormContext)
   const [formData, setFormData] = useState({})
   const [conclusionData, setConclusionData] = useState({})
+  const [typeAnalisis, setTypeAnalisis] = useState(0)
+  const [ns, setNs] = useState(0)
+  const [formReady, setFormReady] = useState(false)
+  const handleSelectAnalisis = (ev) => {
+    ev.preventDefault()
+    const value = ev.target.value
+
+    if (value === '') {
+      setTypeAnalisis('')
+    } else {
+      setTypeAnalisis(parseInt(value))
+    }
+  }
+
+  const handleChangeNs = (ev) => {
+    ev.preventDefault()
+    const value = parseFloat(ev.target.value)
+    setNs(value)
+  }
+
+  const handleChangeForm = (ev) => {
+    ev.preventDefault()
+    setFormReady(false)
+  }
 
   const handleSubmit = async (ev) => {
     ev.preventDefault()
@@ -31,7 +55,20 @@ function MainForm () {
         Accept: 'application/json'
       }
     }).then((response) => setConclusionData({ ...response.data }))
+      .then(() => setFormReady(true))
   }
+
+  useEffect(() => {
+    updateHipotesisProveForm(formReady)
+  }, [formReady])
+
+  useEffect(() => {
+    if (typeAnalisis !== '' && typeAnalisis === 3) {
+      setFormData({ ...formData, ns: ns / 2 })
+    } else if (typeAnalisis !== '') {
+      setFormData({ ...formData, ns })
+    }
+  }, [typeAnalisis])
   useEffect(() => {
     updateHipotesisConclusion({ ...conclusionData })
   }, [conclusionData])
@@ -40,17 +77,49 @@ function MainForm () {
     setFormData(hipotesisDefinition.inputdata)
   }, [hipotesisDefinition.inputdata])
 
+  useEffect(() => {
+    updateHipotesisConclusion({ analisisType: typeAnalisis })
+  }, [typeAnalisis])
+
   return (
     <Container display='flex' flexDirection='row' flexWrap='wrap' w='100%' alignSelf='center'>
       <form
-        style={{ width: '100%' }} onSubmit={handleSubmit}
+        style={{ width: '100%' }} onSubmit={(ev) => handleSubmit(ev)} onChange={(ev) => handleChangeForm(ev)}
       >
         <FormControl>
           <InterestParamForm />
           {hipotesisDefinition.interestParam !== '' ? <CasesForm /> : <></>}
-          {hipotesisDefinition.interestCase !== '' ? <ReqDataForm /> : <></>}
+          {hipotesisDefinition.interestCase !== ''
+            ? <>
+              <ReqDataForm />
+
+              {/* TODO: Fix Bug Form params in reverse  */}
+              <FormLabel marginTop={5}>Nivel de Significancia</FormLabel>
+              <Input
+                name='Nivel de Significancia'
+                step={0.01}
+                min={0}
+                max={1}
+                type='number'
+                placeholder='Ingrese Nivel de Significancia'
+                required
+                onWheel={(ev) => ev.target.blur()}
+                onChange={(ev) => handleChangeNs(ev)}
+              />
+
+              <FormLabel marginTop={5}>Tipo de Análisis (&lt; &gt;, != )</FormLabel>
+              <Select placeholder='Seleccione un tipo de analisis' required onChange={(ev) => handleSelectAnalisis(ev)}>
+                <option value={1}>&lt;</option>
+                <option value={2}>&gt;</option>
+                <option value={3}>!=</option>
+              </Select>
+
+              <Button type='submit' mt={5} colorScheme='blue'>Calcular</Button>
+              </>
+            : <></>}
+
         </FormControl>
-        <Button type='submit' mt={5} colorScheme='blue'>Calcular</Button>
+
       </form>
     </Container>
   )
