@@ -32,14 +32,6 @@ const testHipotesis = {
               name: 'Muestra',
               type: 'number',
               placeholder: 'Ingrese la Muestra'
-            },
-            ns: {
-              name: 'Nivel de Significancia',
-              step: 0.01,
-              min: 0,
-              max: 1,
-              type: 'number',
-              placeholder: 'Ingrese el Nivel de Significacia'
             }
           }
         }
