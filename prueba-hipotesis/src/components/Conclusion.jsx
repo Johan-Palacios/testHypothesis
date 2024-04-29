@@ -1,4 +1,4 @@
-import { Container, Text, Input, Card, CardBody, CardHeader, Heading, Select, Stack } from '@chakra-ui/react'
+import { Container, Text, Card, CardBody, CardHeader, Heading, Stack } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
 import HipotesisConclusionContext from '../context/hipotesisConcusionContext'
 
