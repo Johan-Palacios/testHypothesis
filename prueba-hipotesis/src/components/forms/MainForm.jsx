@@ -64,23 +64,33 @@ function MainForm () {
   }, [formReady])
 
   useEffect(() => {
-    if (typeAnalisis !== '' && typeAnalisis === 3) {
-      setFormData({ ...formData, ns: ns / 2 })
-    } else if (typeAnalisis !== '') {
-      setFormData({ ...formData, ns })
-    }
-  }, [typeAnalisis])
-  useEffect(() => {
     updateHipotesisConclusion({ ...conclusionData })
   }, [conclusionData])
 
   useEffect(() => {
-    setFormData(hipotesisDefinition.inputdata)
-  }, [hipotesisDefinition.inputdata])
+    if (typeAnalisis !== '' && typeAnalisis === 3) {
+      setFormData({ ...hipotesisDefinition.inputdata, ns: ns / 2 })
+    } else if (typeAnalisis !== '') {
+      setFormData({ ...hipotesisDefinition.inputdata, ns })
+    } else {
+      setFormData({ ...hipotesisDefinition.inputdata, ns })
+    }
+  }, [hipotesisDefinition.inputdata, typeAnalisis])
 
   useEffect(() => {
     updateHipotesisConclusion({ analisisType: typeAnalisis })
   }, [typeAnalisis])
+
+  useEffect(() => {
+    setTypeAnalisis('')
+    setNs(0)
+    updateHipotesisConclusion({
+      criticPoint: '',
+      observedValue: '',
+      analisisType: '',
+      mainInterest: ''
+    })
+  }, [hipotesisDefinition.interestCase])
 
   return (
     <Container display='flex' flexDirection='row' flexWrap='wrap' w='100%' alignSelf='center'>
@@ -108,7 +118,7 @@ function MainForm () {
               {/* eslint-disable-next-line react/jsx-closing-tag-location */}
             </>
             : <></>}
-          {ns !== 0 && !isNaN(ns) && ns !== 1
+          {hipotesisDefinition.interestParam !== '' && ns !== 0 && !isNaN(ns) && ns !== 1
             ? <>
 
               <FormLabel marginTop={5}>Tipo de Análisis (&lt; &gt;, != )</FormLabel>
