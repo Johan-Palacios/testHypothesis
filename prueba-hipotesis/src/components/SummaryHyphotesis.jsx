@@ -1,6 +1,7 @@
 import { Card, CardBody, CardHeader, Container, Heading, Text, Image } from '@chakra-ui/react'
 import React, { useContext, useEffect, useState } from 'react'
 import HipotesisAppContext from '../context/hipotesisAppContext'
+import Hipotesis from '../components/Hipotesis'
 
 const SumamaryHyphotesis = () => {
   const [interestParamText, setInterestParamText] = useState('')
@@ -50,6 +51,7 @@ const SumamaryHyphotesis = () => {
                 <Heading as='h4' size='md'>Estadistico de Prueba:</Heading>
                 <Text marginBottom={3}>{interestCaseText.split(' - ')[1]}</Text>
                 <Image width={250} objectFit='cover' src={`/${imageCase}`} fallbackSrc='/vite.svg' marginBottom={5} />
+                <Hipotesis />
                 {/* eslint-disable-next-line react/jsx-indent */}
                 </>
               : <></>
