@@ -8,7 +8,7 @@ export const HipotesisProvider = ({ children }) => {
     interestCase: '',
     imageCase: '',
     apiEndPoint: '',
-    reqdata: {},
+    reqData: {},
     inputdata: {}
   })
 

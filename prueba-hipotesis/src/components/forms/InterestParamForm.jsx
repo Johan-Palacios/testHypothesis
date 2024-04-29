@@ -22,7 +22,7 @@ function InterestParamForm () {
       interestCase: '',
       imageCase: '',
       apiEndPoint: '',
-      reqdata: '',
+      reqData: '',
       inputdata: ''
     })
   }
