@@ -1,6 +1,7 @@
 import { Container, Text, Card, CardBody, CardHeader, Heading, Stack } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
 import HipotesisConclusionContext from '../context/hipotesisConcusionContext'
+import Hipotesis from '../components/Hipotesis'
 
 const Conclusion = () => {
   const { hipotesisConclusion } = useContext(HipotesisConclusionContext)
@@ -18,6 +19,8 @@ const Conclusion = () => {
         </CardHeader>
         <CardBody>
           <Stack>
+            <Heading as='h3'>Hipotesis</Heading>
+            <Hipotesis />
 
             <Text>El valor critico es:&nbsp;
               <Text as='b'>
