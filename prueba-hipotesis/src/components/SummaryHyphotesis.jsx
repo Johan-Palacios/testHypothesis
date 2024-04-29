@@ -27,16 +27,16 @@ const SumamaryHyphotesis = () => {
           <Heading as='h2' size='md'>Resumen De Parametros Hipotesis ✅</Heading>
         </CardHeader>
         <CardBody>
-          <Heading as='h2' size='md'>
+          <Heading as='h2' size='md' marginBottom={5}>
             Datos para Analisis:
             {interestCaseText === '' && interestParamText === '' ? <Text fontSize='small'>*Aun no ha elegido Datos</Text> : <></>}
           </Heading>
           {interestParamText !== ''
             ? <>
-              <Heading as='h4' size='md' colorScheme='blue'>
+              <Heading as='h4' size='md' colorScheme='blue' marginTop={5}>
                 Parámetro de Interes 🤔:
               </Heading>
-              <Text>{interestParamText}</Text>
+              <Text marginBottom={3}>{interestParamText}</Text>
               {/* eslint-disable-next-line react/jsx-indent */}
               </>
             : <></>}
@@ -46,10 +46,10 @@ const SumamaryHyphotesis = () => {
                 <Heading as='h4' size='md'>
                   Caso de Interes 🗒️:
                 </Heading>
-                <Text>{interestCaseText.split(' - ')[0]}</Text>
+                <Text marginBottom={3}>{interestCaseText.split(' - ')[0]}</Text>
                 <Heading as='h4' size='md'>Estadistico de Prueba:</Heading>
-                <Text>{interestCaseText.split(' - ')[1]}</Text>
-                <Image width={250} objectFit='cover' src={`/${imageCase}`} fallbackSrc='/vite.svg' />
+                <Text marginBottom={3}>{interestCaseText.split(' - ')[1]}</Text>
+                <Image width={250} objectFit='cover' src={`/${imageCase}`} fallbackSrc='/vite.svg' marginBottom={5} />
                 {/* eslint-disable-next-line react/jsx-indent */}
                 </>
               : <></>
