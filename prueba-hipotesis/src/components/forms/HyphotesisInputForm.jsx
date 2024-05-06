@@ -1,11 +1,15 @@
 import { Input, FormLabel } from '@chakra-ui/react'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import HipotesisAppContext from '../../context/hipotesisAppContext'
 import HipotesisConclusionContext from '../../context/hipotesisConcusionContext'
 
 export const InputHyphotesis = ({ props, label, propertyInput }) => {
   const { hipotesisDefinition, updateHipotesisDefinition } = useContext(HipotesisAppContext)
   const { updateHipotesisConclusion } = useContext(HipotesisConclusionContext)
+  const [valueInput, setValueInput] = useState('')
+  useEffect(() => {
+    setValueInput('')
+  }, [hipotesisDefinition.interestCase])
 
   return (
     <>
@@ -13,10 +17,12 @@ export const InputHyphotesis = ({ props, label, propertyInput }) => {
       <Input
         {...props}
         required
+        value={valueInput}
         onWheel={(ev) => ev.target.blur()}
         onChange={(ev) => {
           ev.preventDefault()
           const value = ev.target.value
+          setValueInput(value)
           if (props?.maininterest === 1) {
             updateHipotesisConclusion({ mainInterest: parseFloat(value) })
           }
