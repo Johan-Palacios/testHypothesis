@@ -10,6 +10,20 @@ const Conclusion = () => {
     setConclusion({ ...hipotesisConclusion }
     )
   }, [hipotesisConclusion])
+  const [alternativeHipotesis, setAlternativeHipotesis] = useState(false)
+  useEffect(() => {
+    if (conclusion.analisisType === 3 && ((conclusion.observedValue > conclusion.criticPoint) ||
+      (conclusion.observedValue < Math.abs(conclusion.criticPoint) * -1))) {
+      setAlternativeHipotesis(true)
+    }
+    if (conclusion.analisisType === 2 && (conclusion.observedValue > conclusion.criticPoint)) {
+      setAlternativeHipotesis(true)
+    }
+
+    if (conclusion.analisisType === 1 && (conclusion.observedValue < conclusion.criticPoint)) {
+      setAlternativeHipotesis(true)
+    }
+  }, [conclusion.analisisType, conclusion.criticPoint, conclusion.observedValue])
 
   return (
     <Container marginBottom={16}>
@@ -21,19 +35,20 @@ const Conclusion = () => {
           <Stack>
             <Heading as='h3'>Hipotesis</Heading>
             <Hipotesis />
-
-            <Text>El valor critico es:&nbsp;
+            <Text>Valor Critico:&nbsp;
               <Text as='b'>
-                {conclusion.criticPoint}
+                {conclusion.analisisType === 3 ? '\n' + Math.abs(conclusion.criticPoint) * -1 + ' y \n' + Math.abs(conclusion.criticPoint) : conclusion.criticPoint}
               </Text>
             </Text>
             <Text>El valor observado es:&nbsp;
               <Text as='b'>
                 {conclusion.observedValue}
               </Text>
-
             </Text>
-
+            {alternativeHipotesis
+              ? <Text>Se rechaza la Hipotesis Nula y Se acepta la Hipotesis Alternativa</Text>
+              : <Text>Se rechaza la Hipotesis Alternativa y se acepta la hipotesis Nula</Text>}
+            <Text />
           </Stack>
         </CardBody>
 
