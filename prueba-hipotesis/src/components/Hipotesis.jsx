@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
-import HipotesisAppContext from '../context/hipotesisAppContext'
-import HipotesisConclusionContext from '../context/hipotesisConcusionContext'
+import HipotesisAppContext from '@context/hipotesisAppContext'
+import HipotesisConclusionContext from '@context/hipotesisConcusionContext'
 import { Text, Heading, Stack } from '@chakra-ui/react'
 
 const Hipotesis = () => {

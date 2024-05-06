@@ -4,8 +4,8 @@ import {
   Select
 } from '@chakra-ui/react'
 import testHipotesis from '../../utils/hipotesisProp'
-import HipotesisAppContext from '../../context/hipotesisAppContext'
-import HipotesisConclusionContext from '../../context/hipotesisConcusionContext'
+import HipotesisAppContext from '@context/hipotesisAppContext'
+import HipotesisConclusionContext from '@context/hipotesisConcusionContext'
 
 function InterestParamForm () {
   const availableInterestParam = testHipotesis.interestParam

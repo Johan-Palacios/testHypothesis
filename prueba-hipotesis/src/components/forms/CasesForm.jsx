@@ -3,9 +3,9 @@ import {
   FormLabel,
   Select
 } from '@chakra-ui/react'
-import HipotesisAppContext from '../../context/hipotesisAppContext'
+import HipotesisAppContext from '@context/hipotesisAppContext'
 import testHipotesis from '../../utils/hipotesisProp'
-import HipotesisConclusionContext from '../../context/hipotesisConcusionContext'
+import HipotesisConclusionContext from '@context/hipotesisConcusionContext'
 
 function InterestParamForm () {
   const { hipotesisDefinition, updateHipotesisDefinition } = useContext(HipotesisAppContext)

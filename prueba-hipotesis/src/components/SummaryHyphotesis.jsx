@@ -1,7 +1,7 @@
 import { Card, CardBody, CardHeader, Container, Heading, Text, Image } from '@chakra-ui/react'
 import React, { useContext, useEffect, useState } from 'react'
-import HipotesisAppContext from '../context/hipotesisAppContext'
-import Hipotesis from '../components/Hipotesis'
+import HipotesisAppContext from '@context/hipotesisAppContext'
+import Hipotesis from '@components/Hipotesis'
 
 const SumamaryHyphotesis = () => {
   const [interestParamText, setInterestParamText] = useState('')

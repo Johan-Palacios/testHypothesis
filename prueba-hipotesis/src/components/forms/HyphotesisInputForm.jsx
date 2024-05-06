@@ -1,7 +1,7 @@
 import { Input, FormLabel } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
-import HipotesisAppContext from '../../context/hipotesisAppContext'
-import HipotesisConclusionContext from '../../context/hipotesisConcusionContext'
+import HipotesisAppContext from '@context/hipotesisAppContext'
+import HipotesisConclusionContext from '@context/hipotesisConcusionContext'
 
 export const InputHyphotesis = ({ props, label, propertyInput }) => {
   const { hipotesisDefinition, updateHipotesisDefinition } = useContext(HipotesisAppContext)

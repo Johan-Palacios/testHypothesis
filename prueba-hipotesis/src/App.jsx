@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import NavBar from './components/Navbar'
-import MainForm from './components/forms/MainForm.jsx'
+import NavBar from '@components/Navbar'
+import MainForm from '@components/forms/MainForm'
 import { Box } from '@chakra-ui/react'
-import SumamaryHyphotesis from './components/SummaryHyphotesis.jsx'
-import HipotesisConclusionContext from './context/hipotesisConcusionContext'
-import Conclusion from './components/Conclusion.jsx'
-import HipotesisProveFormContext from './context/hipotesisProveFormContext'
+import SumamaryHyphotesis from '@components/SummaryHyphotesis'
+import HipotesisConclusionContext from '@context/hipotesisConcusionContext'
+import Conclusion from '@components/Conclusion'
+import HipotesisProveFormContext from '@context/hipotesisProveFormContext'
 
 function App () {
   const { hipotesisConclusion } = useContext(HipotesisConclusionContext)

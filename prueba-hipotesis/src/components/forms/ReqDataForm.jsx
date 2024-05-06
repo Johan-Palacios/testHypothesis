@@ -1,7 +1,7 @@
 import { Stack } from '@chakra-ui/react'
-import HipotesisAppContext from '../../context/hipotesisAppContext.jsx'
+import HipotesisAppContext from '@context/hipotesisAppContext'
 import React, { useContext } from 'react'
-import { InputHyphotesis } from './HyphotesisInputForm.jsx'
+import { InputHyphotesis } from '@components/forms/HyphotesisInputForm'
 
 const ReqDataForm = () => {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)

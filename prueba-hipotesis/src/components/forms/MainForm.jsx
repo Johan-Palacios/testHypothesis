@@ -9,12 +9,12 @@ import {
 } from '@chakra-ui/react'
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
-import HipotesisAppContext from '../../context/hipotesisAppContext.jsx'
-import HipotesisConclusionContext from '../../context/hipotesisConcusionContext.jsx'
-import CasesForm from './CasesForm.jsx'
-import InterestParamForm from './InterestParamForm.jsx'
-import ReqDataForm from './ReqDataForm.jsx'
-import HipotesisProveFormContext from '../../context/hipotesisProveFormContext.jsx'
+import HipotesisAppContext from '@context/hipotesisAppContext'
+import HipotesisConclusionContext from '@context/hipotesisConcusionContext'
+import CasesForm from '@components/forms/CasesForm'
+import InterestParamForm from '@components/forms/InterestParamForm'
+import ReqDataForm from '@components/forms/ReqDataForm'
+import HipotesisProveFormContext from '@context/hipotesisProveFormContext'
 
 function MainForm () {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
