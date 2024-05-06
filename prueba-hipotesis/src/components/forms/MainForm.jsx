@@ -83,7 +83,7 @@ function MainForm () {
 
   useEffect(() => {
     setTypeAnalisis('')
-    setNs(0)
+    setNs('')
     updateHipotesisConclusion({
       criticPoint: '',
       observedValue: '',
@@ -108,6 +108,7 @@ function MainForm () {
                 name='Nivel de Significancia'
                 step={0.01}
                 min={0.01}
+                value={ns}
                 max={0.99}
                 type='number'
                 placeholder='Ingrese Nivel de Significancia'
@@ -118,7 +119,7 @@ function MainForm () {
               {/* eslint-disable-next-line react/jsx-closing-tag-location */}
             </>
             : <></>}
-          {hipotesisDefinition.interestParam !== '' && ns !== 0 && !isNaN(ns) && ns !== 1
+          {hipotesisDefinition.interestParam !== '' && ns !== 0 && !isNaN(ns) && ns !== 1 && ns !== ''
             ? <>
 
               <FormLabel marginTop={5}>Tipo de Análisis (&lt; &gt;, != )</FormLabel>
