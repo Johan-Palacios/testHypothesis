@@ -20,5 +20,20 @@ app.add_middleware(
 
 # Mean Cases
 @app.get("/mean/know_dev_estand/")
-def read_mean_know_dev_estand(mean_sample: float, mean_population: float, dev_stand: float, n: int, ns: float):
+def read_mean_know_dev_estand(
+    mean_sample: float, mean_population: float, dev_stand: float, n: int, ns: float
+):
     return mean_know_dev_estand(mean_sample, mean_population, dev_stand, n, ns)
+
+
+@app.get("/mean/unknown_dev_stand_t/")
+def read_mean_unknown_dev_stand_t(
+    mean_sample: float,
+    mean_population: float,
+    sample_dev_estand: float,
+    n: int,
+    ns: float,
+):
+    return mean_unknown_dev_stand_t(
+        mean_sample, mean_population, sample_dev_estand, n, ns
+    )
