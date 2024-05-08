@@ -8,8 +8,7 @@ const testHipotesis = {
           name: 'Deviación Estandar Conocida',
           caseDefinition: 'x ~ N(μ, σ)',
           image: 'mean_know_dev_stand.png',
-          statisticsTest: '',
-          endpoint: 'mean/know_dev_estand/',
+          endpoint: 'mean/know_dev_stand/',
           reqData: {
             mean_sample: {
               name: 'Media Muestral',
@@ -27,7 +26,7 @@ const testHipotesis = {
             {
               name: 'Desviación Estandar',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Standard'
+              placeholder: 'Ingrese la Desvacíón Estandard'
             },
             n: {
               name: 'Muestra',
@@ -38,10 +37,9 @@ const testHipotesis = {
         },
 
         {
-          name: 'Deviación Estándar No Conocida t',
+          name: 'Deviación Estándar No Conocida T-Student',
           caseDefinition: 'x ~ N(μ, σ)',
-          image: 'mean_know_dev_stand.png',
-          statisticsTest: '',
+          image: 'mean_unknow_dev_stand_t.png',
           endpoint: 'mean/unknown_dev_stand_t/',
           reqData: {
             mean_sample: {
@@ -56,11 +54,73 @@ const testHipotesis = {
               maininterest: 1,
               placeholder: 'Ingrese la Media Poblacional Ej. 500'
             },
-            sample_dev_estand:
+            sample_dev_stand:
             {
               name: 'Desviación Estandar Muestral',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Standard'
+              placeholder: 'Ingrese la Desvacíón Estandard'
+            },
+            n: {
+              name: 'Muestra',
+              type: 'number',
+              placeholder: 'Ingrese la Muestra'
+            }
+          }
+        },
+        {
+          name: 'Deviación Estándar Conocida Dist. Desconocida',
+          caseDefinition: 'x ~ desconocida n >= 30',
+          image: 'mean_know_dev_stand_dist_know.png',
+          endpoint: 'mean/know_dev_stand/',
+          reqData: {
+            mean_sample: {
+              name: 'Media Muestral',
+              type: 'number',
+              placeholder: 'Ingrese la Media Muestral Ej. 497.3',
+              step: 0.1
+            },
+            mean_population: {
+              name: 'Media Poblacional',
+              type: 'number',
+              maininterest: 1,
+              placeholder: 'Ingrese la Media Poblacional Ej. 500'
+            },
+            dev_stand:
+            {
+              name: 'Desviación Estandar',
+              type: 'number',
+              placeholder: 'Ingrese la Desvacíón Estandard'
+            },
+            n: {
+              name: 'Muestra',
+              type: 'number',
+              placeholder: 'Ingrese la Muestra'
+            }
+          }
+        },
+        {
+          name: 'Deviación Estándar Desconocida Dist. Desconocida',
+          caseDefinition: 'x ~ desconocida n >= 30',
+          image: 'mean_unknow_dev_stand_dist_unknow.png',
+          endpoint: 'mean/know_dev_stand/',
+          reqData: {
+            mean_sample: {
+              name: 'Media Muestral',
+              type: 'number',
+              placeholder: 'Ingrese la Media Muestral Ej. 497.3',
+              step: 0.1
+            },
+            mean_population: {
+              name: 'Media Poblacional',
+              type: 'number',
+              maininterest: 1,
+              placeholder: 'Ingrese la Media Poblacional Ej. 500'
+            },
+            dev_stand:
+            {
+              name: 'Desviación Estandar Muestral',
+              type: 'number',
+              placeholder: 'Ingrese la Desvacíón Estandard Muestral'
             },
             n: {
               name: 'Muestra',
@@ -69,7 +129,6 @@ const testHipotesis = {
             }
           }
         }
-
       ]
     },
     {
