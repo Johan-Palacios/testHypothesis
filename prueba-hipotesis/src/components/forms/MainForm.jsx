@@ -38,8 +38,13 @@ function MainForm () {
 
   const handleChangeNs = (ev) => {
     ev.preventDefault()
-    const value = parseFloat(ev.target.value)
-    setNs(value)
+    const value = ev.target.value
+    const check = parseFloat(value)
+    if (!isNaN(check)) {
+      setNs(parseFloat(value))
+    } else {
+      setNs('')
+    }
   }
 
   const handleChangeForm = (ev) => {
@@ -68,11 +73,9 @@ function MainForm () {
   }, [conclusionData])
 
   useEffect(() => {
-    if (typeAnalisis !== '' && typeAnalisis === 3) {
+    if (typeAnalisis !== '' && typeAnalisis === 3 && !isNaN(ns)) {
       setFormData({ ...hipotesisDefinition.inputdata, ns: ns / 2 })
-    } else if (typeAnalisis !== '') {
-      setFormData({ ...hipotesisDefinition.inputdata, ns })
-    } else {
+    } else if (typeAnalisis !== '' && !isNaN(ns)) {
       setFormData({ ...hipotesisDefinition.inputdata, ns })
     }
   }, [hipotesisDefinition.inputdata, typeAnalisis])
