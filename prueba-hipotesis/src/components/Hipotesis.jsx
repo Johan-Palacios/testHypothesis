@@ -33,7 +33,7 @@ const Hipotesis = () => {
 
   return (
     <Stack>
-      {hipotesisInterestParam !== '' && mainInterest !== ''
+      {hipotesisInterestParam !== '' && mainInterest !== '' && !isNaN(mainInterest)
 
         ? <>
           <Heading as='h4' size='md'>Hipotesis Nula:</Heading>
@@ -41,7 +41,7 @@ const Hipotesis = () => {
           {/* eslint-disable-next-line react/jsx-indent */}
           </>
         : <></>}
-      {hipotesisInterestParam !== '' && mainInterest !== '' && alternativeHipotesis !== ''
+      {hipotesisInterestParam !== '' && mainInterest !== '' && alternativeHipotesis !== '' && !isNaN(mainInterest)
         ? <>
 
           <Heading as='h4' size='md'>Hipotesis Altenativa:</Heading>
