@@ -22,7 +22,15 @@ export const InputHyphotesis = ({ props, label, propertyInput }) => {
         onChange={(ev) => {
           ev.preventDefault()
           const value = ev.target.value
-          setValueInput(value)
+
+          if (isNaN(value)) {
+            setValueInput('')
+          }
+
+          if (!isNaN(value)) {
+            setValueInput(value)
+          }
+
           if (props?.maininterest === 1) {
             updateHipotesisConclusion({ mainInterest: parseFloat(value) })
           }
