@@ -2,8 +2,11 @@ import { Container, Text, Card, CardBody, CardHeader, Heading, Stack } from '@ch
 import { useContext, useEffect, useState } from 'react'
 import HipotesisConclusionContext from '@context/hipotesisConcusionContext'
 import Hipotesis from '@components/Hipotesis'
+import HipotesisAppContext from '@/context/hipotesisAppContext'
+import testHipotesis from '@/utils/hipotesisProp'
 
 const Conclusion = () => {
+  const { hipotesisDefinition } = useContext(HipotesisAppContext)
   const { hipotesisConclusion } = useContext(HipotesisConclusionContext)
   const [conclusion, setConclusion] = useState({})
   useEffect(() => {
@@ -12,10 +15,12 @@ const Conclusion = () => {
   }, [hipotesisConclusion])
   const [alternativeHipotesis, setAlternativeHipotesis] = useState(false)
   useEffect(() => {
+    // Mean
     if (conclusion.analisisType === 3 && ((conclusion.observedValue > conclusion.criticPoint) ||
       (conclusion.observedValue < Math.abs(conclusion.criticPoint) * -1))) {
-      setAlternativeHipotesis(true)
+      setAlternativeHipotesis(false)
     }
+
     if (conclusion.analisisType === 2 && (conclusion.observedValue > conclusion.criticPoint)) {
       setAlternativeHipotesis(true)
     }
@@ -23,7 +28,7 @@ const Conclusion = () => {
     if (conclusion.analisisType === 1 && (conclusion.observedValue < conclusion.criticPoint)) {
       setAlternativeHipotesis(true)
     }
-  }, [conclusion.analisisType, conclusion.criticPoint, conclusion.observedValue])
+  }, [conclusion.analisisType, conclusion.criticPoint, conclusion.observedValue, hipotesisDefinition.interestParam])
 
   return (
     <Container marginBottom={16}>

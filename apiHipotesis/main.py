@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from proportion_cases import *
 from mean_cases import *
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -37,3 +38,10 @@ def read_mean_unknown_dev_stand_t(
     return mean_unknown_dev_stand_t(
         mean_sample, mean_population, sample_dev_stand, n, ns
     )
+
+
+@app.get("/proportion/proportion_bernoulli_n/")
+def read_proportion_bernoulli_n(
+    proportion_population: float, proportion_sample: float, ns: float, n: float
+):
+    return proportion_bernoulli_n(proportion_population, proportion_sample, ns, n)

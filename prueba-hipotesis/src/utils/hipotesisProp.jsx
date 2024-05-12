@@ -137,7 +137,35 @@ const testHipotesis = {
       cases: [
         {
           name: 'Con n >= a 30',
-          caseDefinition: 'x ~ Bernoulli(p)'
+          caseDefinition: 'x ~ Bernoulli(p)',
+          image: 'mean_unknow_dev_stand_dist_unknow.png',
+          endpoint: 'proportion/proportion_bernoulli_n/',
+          reqData: {
+            proportion_population: {
+              name: 'Proporcion Poblacional',
+              type: 'number',
+              placeholder: 'Ingrese la proporción poblacional Ej. 0.2',
+              step: 0.01,
+              max: 0.99,
+              min: 0.01,
+              maininterest: 1
+            },
+            proportion_sample: {
+              name: 'Proporcion Muestral',
+              type: 'number',
+              placeholder: 'Ingrese la proporción Muestral Ej. 0.8',
+              step: 0.01,
+              max: 0.99,
+              min: 0.01
+            },
+            n: {
+              name: 'Muestra',
+              type: 'number',
+              placeholder: 'Ingrese la Muestra'
+            }
+
+          }
+
         }
       ]
     },
