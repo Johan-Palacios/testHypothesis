@@ -41,6 +41,7 @@ def read_mean_unknown_dev_stand_t(
     )
 
 
+# Proportion
 @app.get("/proportion/proportion_bernoulli_n/")
 def read_proportion_bernoulli_n(
     proportion_population: float, proportion_sample: float, ns: float, n: float
