@@ -9,7 +9,7 @@ def mean_know_dev_stand(
     n: float,
     ns: float,
 ):
-    z = float(norm.ppf(ns))
+    z = abs(float(norm.ppf(ns)))
     est_p: float = float(mean_sample - mean_population) / (dev_stand / float(sqrt(n)))
     return {"criticPoint": z, "observedValue": est_p}
 
@@ -21,8 +21,9 @@ def mean_unknown_dev_stand_t(
     n: float,
     ns: float,
 ):
-    z = float(t.ppf(ns, n - 1))
+    z = abs(float(t.ppf(ns, n - 1)))
     est_p: float = float(mean_sample - mean_population) / (
         sample_dev_stand / float(sqrt(n))
     )
+
     return {"criticPoint": z, "observedValue": est_p}
