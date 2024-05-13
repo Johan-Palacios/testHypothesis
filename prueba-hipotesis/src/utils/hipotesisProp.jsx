@@ -31,6 +31,7 @@ const testHipotesis = {
             n: {
               name: 'Muestra',
               type: 'number',
+              min: 1,
               placeholder: 'Ingrese la Muestra'
             }
           }
@@ -63,6 +64,7 @@ const testHipotesis = {
             n: {
               name: 'Muestra',
               type: 'number',
+              min: 1,
               placeholder: 'Ingrese la Muestra'
             }
           }
@@ -94,6 +96,7 @@ const testHipotesis = {
             n: {
               name: 'Muestra',
               type: 'number',
+              min: 1,
               placeholder: 'Ingrese la Muestra'
             }
           }
@@ -125,6 +128,7 @@ const testHipotesis = {
             n: {
               name: 'Muestra',
               type: 'number',
+              min: 1,
               placeholder: 'Ingrese la Muestra'
             }
           }
@@ -161,6 +165,7 @@ const testHipotesis = {
             n: {
               name: 'Muestra',
               type: 'number',
+              min: 1,
               placeholder: 'Ingrese la Muestra'
             }
 
