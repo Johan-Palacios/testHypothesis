@@ -78,7 +78,7 @@ function MainForm () {
     } else if (typeAnalisis !== '' && !isNaN(ns)) {
       setFormData({ ...hipotesisDefinition.inputdata, ns })
     }
-  }, [hipotesisDefinition.inputdata, typeAnalisis])
+  }, [hipotesisDefinition.inputdata, typeAnalisis, ns])
 
   useEffect(() => {
     updateHipotesisConclusion({ analisisType: typeAnalisis })
