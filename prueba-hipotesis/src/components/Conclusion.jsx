@@ -11,10 +11,25 @@ const Conclusion = () => {
   const [conclusion, setConclusion] = useState({})
   const [criticPointValue, setCriticPointValue] = useState('')
   const [alternativeHipotesis, setAlternativeHipotesis] = useState(false)
+  const [graph, setGraph] = useState('')
+
+  const fetchGraphData = async () => {
+    await axios.get(`http://127.0.0.1:8000/${hipotesisDefinition.apiEndPoint}graph`, {
+      params: {
+        observedValue: 1,
+        criticPoint: 1
+      },
+      headers: {
+        Accept: 'application/json'
+      }
+    }).then((response) => setGraph(response.data))
+  }
+
   useEffect(() => {
     setConclusion({ ...hipotesisConclusion }
     )
   }, [hipotesisConclusion])
+
   useEffect(() => {
     if (conclusion.analisisType === 3 && ((conclusion.observedValue > conclusion.criticPoint) ||
       (conclusion.observedValue < conclusion.criticPoint * -1))) {
@@ -43,6 +58,12 @@ const Conclusion = () => {
       setCriticPointValue('\n' + Math.abs(conclusion.criticPoint) * -1 + ' y \n' + conclusion.criticPoint)
     }
   }, [conclusion.analisisType, conclusion.criticPoint])
+
+  useEffect(() => {
+    fetchGraphData()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <Container marginBottom={16}>
       <Card variant='outline'>
@@ -67,6 +88,7 @@ const Conclusion = () => {
               ? <Text>Se rechaza la Hipotesis Nula y Se acepta la Hipotesis Alternativa</Text>
               : <Text>Se rechaza la Hipotesis Alternativa y se acepta la hipotesis Nula</Text>}
             <Text />
+            <Image src={`data:image/png;base64, ${graph.graph}`} />
           </Stack>
         </CardBody>
 
