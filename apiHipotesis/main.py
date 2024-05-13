@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from proportion_cases import *
 from mean_cases import *
+from dev_stand_cases import *
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -45,3 +46,10 @@ def read_proportion_bernoulli_n(
     proportion_population: float, proportion_sample: float, ns: float, n: float
 ):
     return proportion_bernoulli_n(proportion_population, proportion_sample, ns, n)
+
+# Dev Stand
+@app.get("/dev_stand/dev_stand_chi/")
+def read_dev_stand_chi(
+    dev_stand_population: float, dev_stand_sample: float, ns: float, n: float
+):
+    return dev_stand_chi(dev_stand_population, dev_stand_sample, ns, n)
