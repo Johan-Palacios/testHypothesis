@@ -41,12 +41,18 @@ def read_mean_unknown_dev_stand_t(
     )
 
 
+@app.get("/mean/know_dev_stand/graph/")
+def read_mean_know_dev_stand_graph(criticPoint: float, observedValue: float):
+    return mean_know_dev_stand_graph(criticPoint, observedValue)
+
+
 # Proportion
 @app.get("/proportion/proportion_bernoulli_n/")
 def read_proportion_bernoulli_n(
     proportion_population: float, proportion_sample: float, ns: float, n: float
 ):
     return proportion_bernoulli_n(proportion_population, proportion_sample, ns, n)
+
 
 # Dev Stand
 @app.get("/dev_stand/dev_stand_chi/")
