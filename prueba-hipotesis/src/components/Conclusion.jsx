@@ -1,9 +1,9 @@
-import { Container, Text, Card, CardBody, CardHeader, Heading, Stack } from '@chakra-ui/react'
+import { Container, Text, Card, CardBody, CardHeader, Heading, Stack, Image } from '@chakra-ui/react'
+import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import HipotesisConclusionContext from '@context/hipotesisConcusionContext'
 import Hipotesis from '@components/Hipotesis'
 import HipotesisAppContext from '@/context/hipotesisAppContext'
-import testHipotesis from '@/utils/hipotesisProp'
 
 const Conclusion = () => {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
