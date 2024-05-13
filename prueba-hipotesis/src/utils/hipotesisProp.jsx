@@ -179,7 +179,27 @@ const testHipotesis = {
       cases: [
         {
           name: 'x ~ N(μ, σ)',
-          caseDefinition: 'x ~ N(μ, σ)'
+          caseDefinition: '...',
+          image: 'dev_stand_chi.png',
+          endpoint: 'dev_stand/dev_stand_chi/',
+          reqData: {
+            dev_stand_population: {
+              name: 'Desviación Estándar Poblacional',
+              type: 'number',
+              placeholder: 'Ingrese la proporción poblacional Ej. 0.2',
+              maininterest: 1
+            },
+            dev_stand_sample: {
+              name: 'Desviación Estándar Muestral',
+              type: 'number',
+              placeholder: 'Ingrese la proporción Muestral Ej. 0.8'
+            },
+            n: {
+              name: 'Muestra',
+              type: 'number',
+              placeholder: 'Ingrese la Muestra'
+            }
+          }
         }
       ]
     }
