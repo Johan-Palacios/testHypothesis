@@ -9,27 +9,40 @@ const Conclusion = () => {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
   const { hipotesisConclusion } = useContext(HipotesisConclusionContext)
   const [conclusion, setConclusion] = useState({})
+  const [criticPointValue, setCriticPointValue] = useState('')
+  const [alternativeHipotesis, setAlternativeHipotesis] = useState(false)
   useEffect(() => {
     setConclusion({ ...hipotesisConclusion }
     )
   }, [hipotesisConclusion])
-  const [alternativeHipotesis, setAlternativeHipotesis] = useState(false)
   useEffect(() => {
-    // Mean
     if (conclusion.analisisType === 3 && ((conclusion.observedValue > conclusion.criticPoint) ||
-      (conclusion.observedValue < Math.abs(conclusion.criticPoint) * -1))) {
-      setAlternativeHipotesis(false)
+      (conclusion.observedValue < conclusion.criticPoint * -1))) {
+      setAlternativeHipotesis(true)
     }
 
     if (conclusion.analisisType === 2 && (conclusion.observedValue > conclusion.criticPoint)) {
       setAlternativeHipotesis(true)
     }
 
-    if (conclusion.analisisType === 1 && (conclusion.observedValue < conclusion.criticPoint)) {
+    if (conclusion.analisisType === 1 && (conclusion.observedValue < conclusion.criticPoint * -1)) {
       setAlternativeHipotesis(true)
     }
-  }, [conclusion.analisisType, conclusion.criticPoint, conclusion.observedValue, hipotesisDefinition.interestParam])
+  }, [conclusion.analisisType, conclusion.criticPoint, conclusion.observedValue])
 
+  useEffect(() => {
+    if (conclusion.analisisType === 1) {
+      setCriticPointValue(conclusion.criticPoint * -1)
+    }
+
+    if (conclusion.analisisType === 2) {
+      setCriticPointValue(conclusion.criticPoint)
+    }
+
+    if (conclusion.analisisType === 3) {
+      setCriticPointValue('\n' + Math.abs(conclusion.criticPoint) * -1 + ' y \n' + conclusion.criticPoint)
+    }
+  }, [conclusion.analisisType, conclusion.criticPoint])
   return (
     <Container marginBottom={16}>
       <Card variant='outline'>
@@ -42,7 +55,7 @@ const Conclusion = () => {
             <Hipotesis />
             <Text>Valor Critico:&nbsp;
               <Text as='b'>
-                {conclusion.analisisType === 3 ? '\n' + Math.abs(conclusion.criticPoint) * -1 + ' y \n' + Math.abs(conclusion.criticPoint) : conclusion.criticPoint}
+                {criticPointValue}
               </Text>
             </Text>
             <Text>El valor observado es:&nbsp;
