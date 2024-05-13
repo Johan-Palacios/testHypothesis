@@ -142,7 +142,7 @@ const testHipotesis = {
         {
           name: 'Con n >= a 30',
           caseDefinition: 'x ~ Bernoulli(p)',
-          image: 'mean_unknow_dev_stand_dist_unknow.png',
+          image: 'proportion_bernolli_n.png',
           endpoint: 'proportion/proportion_bernoulli_n/',
           reqData: {
             proportion_population: {
@@ -168,7 +168,6 @@ const testHipotesis = {
               min: 1,
               placeholder: 'Ingrese la Muestra'
             }
-
           }
 
         }
