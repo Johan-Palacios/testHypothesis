@@ -12,18 +12,7 @@ const Conclusion = () => {
   const [criticPointValue, setCriticPointValue] = useState('')
   const [alternativeHipotesis, setAlternativeHipotesis] = useState(false)
   const [graph, setGraph] = useState('')
-
-  const fetchGraphData = async () => {
-    await axios.get(`http://127.0.0.1:8000/${hipotesisDefinition.apiEndPoint}graph`, {
-      params: {
-        observedValue: 1,
-        criticPoint: 1
-      },
-      headers: {
-        Accept: 'application/json'
-      }
-    }).then((response) => setGraph(response.data))
-  }
+  const [params, setParams] = useState({})
 
   useEffect(() => {
     setConclusion({ ...hipotesisConclusion }
@@ -59,10 +48,33 @@ const Conclusion = () => {
     }
   }, [conclusion.analisisType, conclusion.criticPoint])
 
+  const fetchGraphData = async () => {
+    await axios.get(`http://127.0.0.1:8000/${hipotesisDefinition.apiEndPoint}graph`, {
+      params,
+      headers: {
+        Accept: 'application/json'
+      }
+    }).then((response) => setGraph(response.data))
+  }
+
   useEffect(() => {
-    fetchGraphData()
+    if (Object.keys(params).length !== 0 &&
+      params.observedValue !== undefined &&
+      params.criticPoint !== undefined &&
+      params.analisisType !== undefined) {
+      fetchGraphData()
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [params])
+
+  useEffect(() => {
+    setParams({
+      observedValue: conclusion.observedValue,
+      criticPoint: conclusion.criticPoint,
+      analisisType: conclusion.analisisType
+    })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [conclusion.observedValue, conclusion.criticPoint, conclusion.analisisType])
 
   return (
     <Container marginBottom={16}>
@@ -88,7 +100,8 @@ const Conclusion = () => {
               ? <Text>Se rechaza la Hipotesis Nula y Se acepta la Hipotesis Alternativa</Text>
               : <Text>Se rechaza la Hipotesis Alternativa y se acepta la hipotesis Nula</Text>}
             <Text />
-            <Image src={`data:image/png;base64, ${graph.graph}`} />
+            {graph.graph !== undefined ? <Image src={`data:image/png;base64, ${graph.graph}`} /> : <></>}
+
           </Stack>
         </CardBody>
 
