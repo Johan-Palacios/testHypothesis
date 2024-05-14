@@ -1,9 +1,6 @@
 from scipy.stats import norm, t
-import numpy as np
-import matplotlib.pyplot as plt
-import base64
-from io import BytesIO
 from math import sqrt
+from utils.graph import graph
 
 
 def mean_know_dev_stand(
@@ -19,23 +16,12 @@ def mean_know_dev_stand(
     return {"criticPoint": z, "observedValue": est_p}
 
 
-def mean_know_dev_stand_graph(criticPoint: float, observedValue: float):
-    x = np.linspace(-5, 5, 1000)
-    y = norm.pdf(x, loc=0, scale=1)  # Media = 0, Desviación estándar = 1
+def mean_know_dev_stand_graph(
+    criticPoint: float, observedValue: float, analisisType: int
+):
+    image = graph(norm, criticPoint, observedValue, analisisType, "Distribución Normal")
 
-    plt.plot(x, y, color="blue")
-    plt.title("Distribución Normal")
-    plt.xlabel("x")
-    plt.ylabel("Densidad de probabilidad")
-
-    buffer = BytesIO()
-    plt.savefig(buffer, format="png")
-    buffer.seek(0)
-    image_base64 = base64.b64encode(buffer.getvalue()).decode("utf-8")
-
-    plt.close()
-
-    return {"graph": image_base64}
+    return {"graph": image}
 
 
 def mean_unknown_dev_stand_t(
