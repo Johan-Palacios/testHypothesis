@@ -42,8 +42,10 @@ def read_mean_unknown_dev_stand_t(
 
 
 @app.get("/mean/know_dev_stand/graph/")
-def read_mean_know_dev_stand_graph(criticPoint: float, observedValue: float):
-    return mean_know_dev_stand_graph(criticPoint, observedValue)
+def read_mean_know_dev_stand_graph(
+    criticPoint: float, observedValue: float, analisisType: int
+):
+    return mean_know_dev_stand_graph(criticPoint, observedValue, analisisType)
 
 
 # Proportion
