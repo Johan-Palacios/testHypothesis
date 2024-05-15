@@ -78,6 +78,7 @@ function MainForm () {
     } else if (typeAnalisis !== '' && !isNaN(ns)) {
       setFormData({ ...hipotesisDefinition.inputdata, ns })
     }
+    updateHipotesisConclusion({ ns })
   }, [hipotesisDefinition.inputdata, typeAnalisis, ns])
 
   useEffect(() => {
@@ -91,7 +92,8 @@ function MainForm () {
       criticPoint: '',
       observedValue: '',
       analisisType: '',
-      mainInterest: ''
+      mainInterest: '',
+      ns: ''
     })
   }, [hipotesisDefinition.interestCase])
 
