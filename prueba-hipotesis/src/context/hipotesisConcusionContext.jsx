@@ -7,7 +7,8 @@ export const HipotesisConclusionProvider = ({ children }) => {
     criticPoint: '',
     observedValue: '',
     analisisType: '',
-    mainInterest: ''
+    mainInterest: '',
+    ns: ''
   })
 
   const updateHipotesisConclusion = (newProps) => {
