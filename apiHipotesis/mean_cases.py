@@ -1,6 +1,6 @@
 from scipy.stats import norm, t
 from math import sqrt
-from utils.graph import graph
+from utils.graph import graph_normal, graph_t_student
 
 
 def mean_know_dev_stand(
@@ -19,8 +19,15 @@ def mean_know_dev_stand(
 def mean_know_dev_stand_graph(
     criticPoint: float, observedValue: float, analisisType: int
 ):
-    image = graph(norm, criticPoint, observedValue, analisisType, "Distribución Normal")
+    image = graph_normal(criticPoint, observedValue, analisisType)
 
+    return {"graph": image}
+
+
+def mean_unknown_dev_stand_t_graph(
+    criticPoint: float, observedValue: float, analisisType: int, n: int
+):
+    image = graph_t_student(criticPoint, observedValue, analisisType, n)
     return {"graph": image}
 
 
