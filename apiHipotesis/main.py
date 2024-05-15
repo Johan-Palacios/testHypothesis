@@ -28,6 +28,13 @@ def read_mean_know_dev_stand(
     return mean_know_dev_stand(mean_sample, mean_population, dev_stand, n, ns)
 
 
+@app.get("/mean/know_dev_stand/graph/")
+def read_mean_know_dev_stand_graph(
+    criticPoint: float, observedValue: float, analisisType: int
+):
+    return mean_know_dev_stand_graph(criticPoint, observedValue, analisisType)
+
+
 @app.get("/mean/unknown_dev_stand_t/")
 def read_mean_unknown_dev_stand_t(
     mean_sample: float,
@@ -41,11 +48,11 @@ def read_mean_unknown_dev_stand_t(
     )
 
 
-@app.get("/mean/know_dev_stand/graph/")
-def read_mean_know_dev_stand_graph(
-    criticPoint: float, observedValue: float, analisisType: int
+@app.get("/mean/unknown_dev_stand_t/graph/")
+def read_mean_unknown_dev_stand_t_graph(
+    criticPoint: float, observedValue: float, analisisType: int, n: int
 ):
-    return mean_know_dev_stand_graph(criticPoint, observedValue, analisisType)
+    return mean_unknown_dev_stand_t_graph(criticPoint, observedValue, analisisType, n)
 
 
 # Proportion
@@ -62,3 +69,11 @@ def read_dev_stand_chi(
     dev_stand_population: float, dev_stand_sample: float, ns: float, n: float
 ):
     return dev_stand_chi(dev_stand_population, dev_stand_sample, ns, n)
+
+
+@app.get("/dev_stand/dev_stand_chi/graph")
+
+def read_dev_stand_chi_graph(
+    criticPoint: float, observedValue: float, analisisType: int, n: int
+):
+    return dev_stand_chi_graph(criticPoint, observedValue, analisisType, n)
