@@ -4,10 +4,11 @@ import HipotesisAppContext from '@context/hipotesisAppContext'
 import Hipotesis from '@components/Hipotesis'
 
 const SumamaryHyphotesis = () => {
+  const { hipotesisDefinition } = useContext(HipotesisAppContext)
+
   const [interestParamText, setInterestParamText] = useState('')
   const [interestCaseText, setInterestCaseText] = useState('')
   const [imageCase, setImageCase] = useState('')
-  const { hipotesisDefinition } = useContext(HipotesisAppContext)
 
   useEffect(() => {
     setInterestParamText(hipotesisDefinition.interestParam)

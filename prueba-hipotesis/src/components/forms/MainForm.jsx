@@ -21,6 +21,7 @@ function MainForm () {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
   const { updateHipotesisConclusion } = useContext(HipotesisConclusionContext)
   const { updateHipotesisProveForm } = useContext(HipotesisProveFormContext)
+
   const [formData, setFormData] = useState({})
   const [conclusionData, setConclusionData] = useState({})
   const [typeAnalisis, setTypeAnalisis] = useState(0)
@@ -113,7 +114,9 @@ function MainForm () {
       >
         <FormControl>
           <InterestParamForm />
+
           {hipotesisDefinition.interestParam !== '' ? <CasesForm /> : <></>}
+
           {hipotesisDefinition.interestCase !== ''
             ? <>
               <ReqDataForm />
@@ -133,21 +136,20 @@ function MainForm () {
               {/* eslint-disable-next-line react/jsx-closing-tag-location */}
             </>
             : <></>}
+
           {hipotesisDefinition.interestParam !== '' && ns !== 0 && !isNaN(ns) && ns !== 1 && ns !== ''
             ? <>
-
               <FormLabel marginTop={5}>Tipo de Análisis (&lt; &gt;, != )</FormLabel>
               <Select placeholder='Seleccione un tipo de analisis' required onChange={(ev) => handleSelectAnalisis(ev)}>
                 <option value={1}>&lt;</option>
                 <option value={2}>&gt;</option>
                 <option value={3}>!=</option>
               </Select>
-
               <Button type='submit' mt={5} colorScheme='blue'>Calcular</Button>
-
               {/* eslint-disable-next-line react/jsx-closing-tag-location */}
             </>
             : <></>}
+
         </FormControl>
       </form>
     </Container>

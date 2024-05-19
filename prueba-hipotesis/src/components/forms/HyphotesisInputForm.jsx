@@ -2,11 +2,14 @@ import { Input, FormLabel } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
 import HipotesisAppContext from '@context/hipotesisAppContext'
 import HipotesisConclusionContext from '@context/hipotesisConcusionContext'
+import { PropTypes } from 'prop-types'
 
 export const InputHyphotesis = ({ props, label, propertyInput }) => {
   const { hipotesisDefinition, updateHipotesisDefinition } = useContext(HipotesisAppContext)
   const { updateHipotesisConclusion } = useContext(HipotesisConclusionContext)
+
   const [valueInput, setValueInput] = useState('')
+
   useEffect(() => {
     setValueInput('')
   }, [hipotesisDefinition.interestCase])
@@ -44,4 +47,11 @@ export const InputHyphotesis = ({ props, label, propertyInput }) => {
       />
     </>
   )
+}
+
+InputHyphotesis.propTypes = {
+  props: PropTypes.object.isRequired,
+  maininterest: PropTypes.number,
+  label: PropTypes.string.isRequired,
+  propertyInput: PropTypes.string.isRequired
 }

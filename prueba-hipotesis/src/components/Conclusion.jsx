@@ -10,6 +10,7 @@ import cornerCases from '@/utils/cornerCases'
 const Conclusion = () => {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
   const { hipotesisConclusion } = useContext(HipotesisConclusionContext)
+
   const [conclusion, setConclusion] = useState({})
   const [criticPointValue, setCriticPointValue] = useState('')
   const [alternativeHipotesis, setAlternativeHipotesis] = useState(false)
@@ -22,23 +23,37 @@ const Conclusion = () => {
     return cornerCases.some((cornerCase) => inputCase === cornerCase)
   }
 
+  const fetchGraphData = async () => {
+    await axios.get(`http://127.0.0.1:8000/${hipotesisDefinition.apiEndPoint}graph`, {
+      params,
+      headers: {
+        Accept: 'application/json'
+      }
+    }).then((response) => setGraph(response.data))
+  }
+
   useEffect(() => {
     setConclusion({ ...hipotesisConclusion }
     )
   }, [hipotesisConclusion])
 
   useEffect(() => {
-    // if (conclusion.analisisType === 3 && ) {
-    //
-    // }
+    if (conclusion.analisisType === 3 && (conclusion.observedValue > conclusion.criticPoint) &&
+      isCorner(hipotesisDefinition.apiEndPoint)) {
+      setAlternativeHipotesis(true)
+    }
     if (conclusion.analisisType === 3 && ((conclusion.observedValue > conclusion.criticPoint) ||
       (conclusion.observedValue < conclusion.criticPoint * -1))) {
       setAlternativeHipotesis(true)
     } else if (conclusion.analisisType === 2 && (conclusion.observedValue > conclusion.criticPoint)) {
       setAlternativeHipotesis(true)
+    } else if (conclusion.analisisType === 1 && (conclusion.observedValue < conclusion.criticPoint) &&
+      isCorner(hipotesisDefinition.apiEndPoint)) {
+      setAlternativeHipotesis(true)
     } else if (conclusion.analisisType === 1 && (conclusion.observedValue < conclusion.criticPoint * -1)) {
       setAlternativeHipotesis(true)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conclusion.analisisType, conclusion.criticPoint, conclusion.observedValue])
 
   useEffect(() => {
@@ -55,15 +70,6 @@ const Conclusion = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conclusion.analisisType, conclusion.criticPoint])
-
-  const fetchGraphData = async () => {
-    await axios.get(`http://127.0.0.1:8000/${hipotesisDefinition.apiEndPoint}graph`, {
-      params,
-      headers: {
-        Accept: 'application/json'
-      }
-    }).then((response) => setGraph(response.data))
-  }
 
   useEffect(() => {
     if (Object.keys(params).length !== 0 &&

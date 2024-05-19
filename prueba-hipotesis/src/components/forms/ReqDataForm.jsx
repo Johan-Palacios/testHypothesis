@@ -5,7 +5,9 @@ import { InputHyphotesis } from '@components/forms/HyphotesisInputForm'
 
 const ReqDataForm = () => {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
+
   const reqData = hipotesisDefinition.reqData
+
   return (
     <>
       <Stack>

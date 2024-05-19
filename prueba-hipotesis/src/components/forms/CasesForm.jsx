@@ -24,21 +24,26 @@ function InterestParamForm () {
   if (hipotesisDefinition.interestParam === testHipotesis.interestParam[2].name) {
     availableCases = testHipotesis.interestParam[2].cases
   }
+
   const changeCase = (ev) => {
     ev.preventDefault()
+
     const interestCase = ev.target.value
     const selectedCaseInfo = availableCases.filter((currentCase) => {
       return currentCase.name === interestCase.split(' - ')[0]
     })[0]
+
     const imagePath = selectedCaseInfo?.image ?? ''
     const apiEndPoint = selectedCaseInfo?.endpoint ?? ''
     const reqData = selectedCaseInfo?.reqData ?? {}
+
     updateHipotesisDefinition({ interestCase, imageCase: imagePath, apiEndPoint, reqData, inputdata: {} })
     updateHipotesisConclusion({
       criticPoint: '',
       observedValue: ''
     })
   }
+
   return (
     <>
       <FormLabel>Seleccione Casos</FormLabel>

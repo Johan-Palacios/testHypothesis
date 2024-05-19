@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react'
+import { PropTypes } from 'prop-types'
 
 const HipotesisProveFormContext = createContext()
 
@@ -17,3 +18,7 @@ export const HipotesisProveFormProvider = ({ children }) => {
 }
 
 export default HipotesisProveFormContext
+
+HipotesisProveFormProvider.propTypes = {
+  children: PropTypes.element
+}

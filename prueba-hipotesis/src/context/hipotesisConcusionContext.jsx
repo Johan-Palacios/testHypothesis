@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react'
+import { PropTypes } from 'prop-types'
 
 const HipotesisConclusionContext = createContext()
 
@@ -23,3 +24,7 @@ export const HipotesisConclusionProvider = ({ children }) => {
 }
 
 export default HipotesisConclusionContext
+
+HipotesisConclusionProvider.propTypes = {
+  children: PropTypes.element
+}

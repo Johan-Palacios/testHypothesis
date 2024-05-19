@@ -9,14 +9,17 @@ import HipotesisConclusionContext from '@context/hipotesisConcusionContext'
 
 function InterestParamForm () {
   const availableInterestParam = testHipotesis.interestParam
+
   const { updateHipotesisDefinition } = useContext(HipotesisAppContext)
   const { updateHipotesisConclusion } = useContext(HipotesisConclusionContext)
+
   const changeInterestParam = (ev) => {
     ev.preventDefault()
     updateHipotesisConclusion({
       criticPoint: '',
       observedValue: ''
     })
+
     updateHipotesisDefinition({
       interestParam: ev.target.value,
       interestCase: '',
@@ -26,6 +29,7 @@ function InterestParamForm () {
       inputdata: ''
     })
   }
+
   return (
     <>
       <FormLabel>Seleccione Parametro de Interés</FormLabel>

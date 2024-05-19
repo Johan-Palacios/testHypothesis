@@ -6,9 +6,11 @@ import { Text, Heading, Stack } from '@chakra-ui/react'
 const Hipotesis = () => {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
   const { hipotesisConclusion } = useContext(HipotesisConclusionContext)
+
   const [hipotesisInterestParam, setHipotesisInterestParam] = useState('')
   const [mainInterest, setMainInterest] = useState('')
   const [alternativeHipotesis, setAlternativeHipotesis] = useState('')
+
   useEffect(() => {
     setHipotesisInterestParam(hipotesisDefinition.interestParam[0])
   }, [hipotesisDefinition])
