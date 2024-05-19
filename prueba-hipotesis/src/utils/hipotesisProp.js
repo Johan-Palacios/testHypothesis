@@ -175,7 +175,7 @@ const testHipotesis = {
     },
     {
       type: 'standev',
-      name: 'σ² (Desviación Estándar )',
+      name: 'σ² ( Desviación Estándar )',
       cases: [
         {
           name: 'x ~ N(μ, σ)',
