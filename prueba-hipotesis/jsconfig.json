@@ -9,6 +9,13 @@
       ],
       "@context/*":[
         "./src/context/*"
+      ],
+      "@utils/*":[
+        "./src/utils/*"
+      ],
+
+      "@hooks/*":[
+        "./src/hooks/*"
       ]
     }
   }
