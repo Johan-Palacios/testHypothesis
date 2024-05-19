@@ -11,10 +11,15 @@ def graph_normal(
     analisis_type: int,
 ):
 
-    x = np.linspace(-5, 5, 1000)
+    if observed_value > 5:
+        x_inf_lim = -1 - int(observed_value)
+        x_sup_lim = 1 + int(observed_value)
+        x = np.linspace(x_inf_lim, x_sup_lim, 1000)
+    else:
+        x = np.linspace(-5.5, 5.5, 1000)
     y = norm.pdf(x, loc=0, scale=1)
 
-    plt.figure(figsize=(8, 6))
+    plt.figure(figsize=(10, 8))
     plt.plot(x, y, color="blue")
     plt.title("Distribución Normal")
     plt.xlabel("x")
@@ -174,7 +179,12 @@ def graph_t_student(
     critic_point: float, observed_value: float, analisis_type: int, n: int
 ):
 
-    x = np.linspace(-5, 5, 1000)
+    if observed_value > 5:
+        x_inf_lim = -1 - int(observed_value)
+        x_sup_lim = 1 + int(observed_value)
+        x = np.linspace(x_inf_lim, x_sup_lim, 1000)
+    else:
+        x = np.linspace(-5.5, 5.5, 1000)
     y = t.pdf(x, n - 1)
 
     plt.figure(figsize=(8, 6))
@@ -329,25 +339,30 @@ def graph_t_student(
 
 def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n: int):
 
-    x = np.linspace(0, 20, 1000)
+    z_value = critic_point
+
+    if observed_value > critic_point:
+        x = np.linspace(0, observed_value + observed_value * 0.25, 1000)
+    else:
+        x = np.linspace(0, z_value + z_value * 0.25, 1000)
     y = chi2.pdf(x, n - 1)
 
-    plt.plot(x, y, color="blue")
-    plt.title("Distribución Chi²\nn-1 Grados de Libertad")
+    plt.figure(figsize=(10, 8))
+    plt.plot(x, y, color="black")
+    plt.title("Distribución Chi2\nn-1 Grados de Libertad")
     plt.xlabel("x")
     plt.ylabel("Densidad de probabilidad")
-    plt.figure(figsize=(8,6))
-    z_value = critic_point
+    plt.plot(x, y, color="black")
 
     plt.annotate(
         f"Valor\nObservado = {round(observed_value, 4)}",
         xy=(observed_value, float(chi2.pdf(observed_value, n - 1))),
-        xytext=(observed_value - 1, 0.01),
+        xytext=(observed_value - observed_value * 0.15, 0.02),
         arrowprops=dict(facecolor="black", arrowstyle="->"),
     )
 
     if analisis_type == 1:
-        z_value *= -1
+        z_value *= 1
 
         plt.annotate(
             f"z = {round(z_value, 4)}",
@@ -360,7 +375,7 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
         plt.fill_between(x[x <= z_value], y[x <= z_value], color="red", alpha=0.3)
         plt.axvline(x=z_value, color="black", linestyle="--")
 
-        text_x_right = float(chi2.pdf(z_value, n - 1))
+        text_x_right = z_value + z_value * 0.25
         text_y_right = chi2.pdf(z_value, n - 1) + 0.05
         plt.text(
             text_x_right,
@@ -370,7 +385,7 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
             horizontalalignment="left",
         )
 
-        text_x_left = z_value - 0.5
+        text_x_left = z_value - z_value * 0.25
         text_y_left = chi2.pdf(z_value, n - 1) + 0.005
         plt.text(
             text_x_left,
@@ -391,7 +406,7 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
         plt.fill_between(x[x <= z_value], y[x <= z_value], color="blue", alpha=0.3)
         plt.axvline(x=z_value, color="black", linestyle="--")
 
-        text_x_right = z_value + 0.30
+        text_x_right = z_value + z_value * 0.25
         text_y_right = chi2.pdf(z_value, n - 1) * 1
         plt.text(
             text_x_right,
@@ -401,7 +416,7 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
             horizontalalignment="left",
         )
 
-        text_x_left = float(chi2.pdf(-z_value, n - 1)) + n - 1
+        text_x_left = z_value - z_value * 0.25
         text_y_left = chi2.pdf(z_value, n - 1)
         plt.text(
             text_x_left,
@@ -420,13 +435,6 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
             arrowprops=dict(facecolor="black", arrowstyle="->"),
         )
 
-        plt.annotate(
-            f"z = {round(-z_value, 4)}",
-            xy=(z_value * -1, float(chi2.pdf(z_value, n - 1))),
-            xytext=(z_value * -1 + 0.6, 0.04),
-            arrowprops=dict(facecolor="black", arrowstyle="->"),
-        )
-
         plt.fill_between(x[x >= z_value], y[x >= z_value], color="red", alpha=0.3)
         plt.fill_between(
             x[x <= z_value * -1], y[x <= z_value * -1], color="red", alpha=0.3
@@ -440,11 +448,10 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
             alpha=0.3,
         )
 
-        plt.axvline(x=-z_value, color="black", linestyle="--")
         plt.axvline(x=z_value, color="black", linestyle="--")
 
-        text_x_right = z_value + 0.5
-        text_y_right = chi2.pdf(z_value, n - 1)
+        text_x_right = z_value + z_value * 0.25
+        text_y_right = chi2.pdf(z_value, n - 1) * 1
         plt.text(
             text_x_right,
             float(text_y_right),
@@ -453,22 +460,12 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
             horizontalalignment="left",
         )
 
-        text_x_right = 0
-        text_y_right = chi2.pdf(0, n - 1) / 2
-        plt.text(
-            text_x_right,
-            float(text_y_right),
-            "Aceptación H₀",
-            color="black",
-            horizontalalignment="center",
-        )
-
-        text_x_left = -z_value - 0.5
-        text_y_left = chi2.pdf(z_value, n - 1) * 1
+        text_x_left = z_value - z_value * 0.25
+        text_y_left = chi2.pdf(z_value, n - 1)
         plt.text(
             text_x_left,
             float(text_y_left),
-            "Rechazo H₀",
+            "Aceptación H₀",
             color="black",
             horizontalalignment="right",
         )
