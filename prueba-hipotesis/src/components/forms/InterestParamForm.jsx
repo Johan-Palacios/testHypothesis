@@ -29,7 +29,7 @@ function InterestParamForm () {
   return (
     <>
       <FormLabel>Seleccione Parametro de Interés</FormLabel>
-      <Select placeholder='Ningun parametro Seleccionado' onChange={changeInterestParam} required>
+      <Select placeholder='Ningun parametro Seleccionado' onChange={changeInterestParam} required marginBottom={2}>
         {availableInterestParam.map(({ name }) => {
           return <option key={name}>{name}</option>
         })}
