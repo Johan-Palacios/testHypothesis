@@ -11,6 +11,8 @@ def graph_normal(
     analisis_type: int,
 ):
 
+    z_value = critic_point
+
     if observed_value > 5:
         x_inf_lim = -1 - int(observed_value)
         x_sup_lim = 1 + int(observed_value)
@@ -24,7 +26,6 @@ def graph_normal(
     plt.title("Distribución Normal")
     plt.xlabel("x")
     plt.ylabel("Densidad de probabilidad")
-    z_value = critic_point
 
     plt.annotate(
         f"Valor\nObservado = {round(observed_value, 4)}",
@@ -34,6 +35,7 @@ def graph_normal(
     )
 
     if analisis_type == 1:
+
         z_value *= -1
 
         plt.annotate(
@@ -47,7 +49,6 @@ def graph_normal(
         plt.fill_between(x[x <= z_value], y[x <= z_value], color="red", alpha=0.3)
         plt.axvline(x=z_value, color="black", linestyle="--")
 
-        # Agregar texto para el área resaltada de la cola derecha
         text_x_right = z_value + 0.30
         text_y_right = norm.pdf(z_value) * 1
         plt.text(
@@ -58,7 +59,6 @@ def graph_normal(
             horizontalalignment="left",
         )
 
-        # Agregar texto para el área resaltada de la cola izquierda
         text_x_left = -2
         text_y_left = norm.pdf(z_value) * 1
         plt.text(
@@ -69,6 +69,7 @@ def graph_normal(
             horizontalalignment="right",
         )
     if analisis_type == 2:
+
         plt.annotate(
             f"z = {round(z_value, 4)}",
             xy=(z_value, float(norm.pdf(z_value))),
@@ -80,7 +81,6 @@ def graph_normal(
         plt.fill_between(x[x <= z_value], y[x <= z_value], color="blue", alpha=0.3)
         plt.axvline(x=z_value, color="black", linestyle="--")
 
-        # Agregar texto para el área resaltada de la cola derecha
         text_x_right = z_value + 0.30
         text_y_right = norm.pdf(z_value) * 1
         plt.text(
@@ -91,7 +91,6 @@ def graph_normal(
             horizontalalignment="left",
         )
 
-        # Agregar texto para el área resaltada de la cola izquierda
         text_x_left = -2
         text_y_left = norm.pdf(z_value) * 1
         plt.text(
@@ -122,7 +121,6 @@ def graph_normal(
         plt.fill_between(
             x[x <= z_value * -1], y[x <= z_value * -1], color="red", alpha=0.3
         )
-
         plt.fill_between(
             x,
             y,
@@ -134,7 +132,6 @@ def graph_normal(
         plt.axvline(x=-z_value, color="black", linestyle="--")
         plt.axvline(x=z_value, color="black", linestyle="--")
 
-        # Agregar texto para el área resaltada de la cola derecha
         text_x_right = z_value + 0.30
         text_y_right = norm.pdf(z_value) * 1
         plt.text(
@@ -155,7 +152,6 @@ def graph_normal(
             horizontalalignment="center",
         )
 
-        # Agregar texto para el área resaltada de la cola izquierda
         text_x_left = -2
         text_y_left = norm.pdf(z_value) * 1
         plt.text(
@@ -179,6 +175,8 @@ def graph_t_student(
     critic_point: float, observed_value: float, analisis_type: int, n: int
 ):
 
+    z_value = critic_point
+
     if observed_value > 5:
         x_inf_lim = -1 - int(observed_value)
         x_sup_lim = 1 + int(observed_value)
@@ -192,7 +190,6 @@ def graph_t_student(
     plt.title("Distribución T-Student\nn-1 Grados de Libertad")
     plt.xlabel("x")
     plt.ylabel("Densidad de probabilidad")
-    z_value = critic_point
 
     plt.annotate(
         f"Valor\nObservado = {round(observed_value, 4)}",
@@ -202,6 +199,7 @@ def graph_t_student(
     )
 
     if analisis_type == 1:
+
         z_value *= -1
 
         plt.annotate(
@@ -235,6 +233,7 @@ def graph_t_student(
             horizontalalignment="right",
         )
     if analisis_type == 2:
+
         plt.annotate(
             f"z = {round(z_value, 4)}",
             xy=(z_value, float(t.pdf(z_value, n - 1))),
@@ -286,7 +285,6 @@ def graph_t_student(
         plt.fill_between(
             x[x <= z_value * -1], y[x <= z_value * -1], color="red", alpha=0.3
         )
-
         plt.fill_between(
             x,
             y,
@@ -365,6 +363,7 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
     )
 
     if analisis_type == 1:
+
         text_y_z_value = float(
             chi2.pdf(z_value, n - 1) + (chi2.pdf(z_value, n - 1)) * 0.20
         )
@@ -451,7 +450,6 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
         plt.fill_between(
             x[x <= z_value * -1], y[x <= z_value * -1], color="red", alpha=0.3
         )
-
         plt.fill_between(
             x,
             y,
@@ -459,7 +457,6 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
             color="blue",
             alpha=0.3,
         )
-
         plt.axvline(x=z_value, color="black", linestyle="--")
 
         text_x_right = z_value + z_value * 0.25
