@@ -354,20 +354,25 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
     plt.ylabel("Densidad de probabilidad")
     plt.plot(x, y, color="black")
 
+    text_y_observed_value = float(
+        chi2.pdf(z_value, n - 1) + (chi2.pdf(z_value, n - 1)) * 0.20
+    )
     plt.annotate(
         f"Valor\nObservado = {round(observed_value, 4)}",
         xy=(observed_value, float(chi2.pdf(observed_value, n - 1))),
-        xytext=(observed_value - observed_value * 0.15, 0.02),
+        xytext=(observed_value - observed_value * 0.15, text_y_observed_value),
         arrowprops=dict(facecolor="black", arrowstyle="->"),
     )
 
     if analisis_type == 1:
-        z_value *= 1
+        text_y_z_value = float(
+            chi2.pdf(z_value, n - 1) + (chi2.pdf(z_value, n - 1)) * 0.20
+        )
 
         plt.annotate(
             f"z = {round(z_value, 4)}",
             xy=(z_value, float(chi2.pdf(z_value, n - 1))),
-            xytext=(z_value + 0.6, 0.06),
+            xytext=(z_value + 0.6, text_y_z_value),
             arrowprops=dict(facecolor="black", arrowstyle="->"),
         )
 
@@ -376,7 +381,7 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
         plt.axvline(x=z_value, color="black", linestyle="--")
 
         text_x_right = z_value + z_value * 0.25
-        text_y_right = chi2.pdf(z_value, n - 1) + 0.05
+        text_y_right = chi2.pdf(z_value, n - 1) - chi2.pdf(z_value, n - 1) * 0.20
         plt.text(
             text_x_right,
             float(text_y_right),
@@ -386,7 +391,7 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
         )
 
         text_x_left = z_value - z_value * 0.25
-        text_y_left = chi2.pdf(z_value, n - 1) + 0.005
+        text_y_left = chi2.pdf(z_value, n - 1) - chi2.pdf(z_value, n - 1) * 0.20
         plt.text(
             text_x_left,
             float(text_y_left),
@@ -395,10 +400,14 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
             horizontalalignment="right",
         )
     if analisis_type == 2:
+
+        text_y_z_value = float(
+            chi2.pdf(z_value, n - 1) + (chi2.pdf(z_value, n - 1)) * 0.20
+        )
         plt.annotate(
             f"z = {round(z_value, 4)}",
             xy=(z_value, float(chi2.pdf(z_value, n - 1))),
-            xytext=(z_value + 0.6, 0.08),
+            xytext=(z_value + 0.6, text_y_z_value),
             arrowprops=dict(facecolor="black", arrowstyle="->"),
         )
 
@@ -428,10 +437,13 @@ def graph_chi2(critic_point: float, observed_value: float, analisis_type: int, n
 
     if analisis_type == 3:
 
+        text_y_z_value = float(
+            chi2.pdf(z_value, n - 1) + (chi2.pdf(z_value, n - 1)) * 0.20
+        )
         plt.annotate(
             f"z = {round(z_value, 4)}",
             xy=(z_value, float(chi2.pdf(z_value, n - 1))),
-            xytext=(z_value + 0.6, 0.04),
+            xytext=(z_value + 0.6, text_y_z_value),
             arrowprops=dict(facecolor="black", arrowstyle="->"),
         )
 
