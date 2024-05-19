@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react'
 import HipotesisConclusionContext from '@context/hipotesisConcusionContext'
 import Hipotesis from '@components/Hipotesis'
 import HipotesisAppContext from '@/context/hipotesisAppContext'
+import cornerCases from '@/utils/cornerCases'
 
 const Conclusion = () => {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
@@ -17,38 +18,42 @@ const Conclusion = () => {
   const [ns, setNs] = useState(0)
   const [textConclusion, setTextConclusion] = useState('')
 
+  const isCorner = (inputCase) => {
+    return cornerCases.some((cornerCase) => inputCase === cornerCase)
+  }
+
   useEffect(() => {
     setConclusion({ ...hipotesisConclusion }
     )
   }, [hipotesisConclusion])
 
   useEffect(() => {
+    // if (conclusion.analisisType === 3 && ) {
+    //
+    // }
     if (conclusion.analisisType === 3 && ((conclusion.observedValue > conclusion.criticPoint) ||
       (conclusion.observedValue < conclusion.criticPoint * -1))) {
       setAlternativeHipotesis(true)
-    }
-
-    if (conclusion.analisisType === 2 && (conclusion.observedValue > conclusion.criticPoint)) {
+    } else if (conclusion.analisisType === 2 && (conclusion.observedValue > conclusion.criticPoint)) {
       setAlternativeHipotesis(true)
-    }
-
-    if (conclusion.analisisType === 1 && (conclusion.observedValue < conclusion.criticPoint * -1)) {
+    } else if (conclusion.analisisType === 1 && (conclusion.observedValue < conclusion.criticPoint * -1)) {
       setAlternativeHipotesis(true)
     }
   }, [conclusion.analisisType, conclusion.criticPoint, conclusion.observedValue])
 
   useEffect(() => {
-    if (conclusion.analisisType === 1) {
-      setCriticPointValue(conclusion.criticPoint * -1)
-    }
-
-    if (conclusion.analisisType === 2) {
+    if (conclusion.analisisType === 1 && isCorner(hipotesisDefinition.apiEndPoint)) {
       setCriticPointValue(conclusion.criticPoint)
+    } else if (conclusion.analisisType === 1) {
+      setCriticPointValue(conclusion.criticPoint * -1)
+    } else if (conclusion.analisisType === 2) {
+      setCriticPointValue(conclusion.criticPoint)
+    } else if (conclusion.analisisType === 3 && isCorner(hipotesisDefinition.apiEndPoint)) {
+      setCriticPointValue(conclusion.criticPoint)
+    } else if (conclusion.analisisType === 3) {
+      setCriticPointValue('\n' + conclusion.criticPoint * -1 + ' y \n' + conclusion.criticPoint)
     }
-
-    if (conclusion.analisisType === 3) {
-      setCriticPointValue('\n' + Math.abs(conclusion.criticPoint) * -1 + ' y \n' + conclusion.criticPoint)
-    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conclusion.analisisType, conclusion.criticPoint])
 
   const fetchGraphData = async () => {
@@ -65,10 +70,10 @@ const Conclusion = () => {
       params.observedValue !== undefined &&
       params.criticPoint !== undefined &&
       params.analisisType !== undefined &&
-    hipotesisDefinition.inputdata.n) {
+      hipotesisDefinition.inputdata.n) {
       fetchGraphData()
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params])
   useEffect(() => {
     setNs(hipotesisConclusion.ns)
@@ -81,7 +86,7 @@ const Conclusion = () => {
       analisisType: conclusion.analisisType,
       n: hipotesisDefinition.inputdata.n
     })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conclusion.observedValue, conclusion.criticPoint, conclusion.analisisType, hipotesisDefinition.inputdata.n])
 
   useEffect(() => {

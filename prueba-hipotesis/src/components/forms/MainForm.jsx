@@ -15,6 +15,7 @@ import CasesForm from '@components/forms/CasesForm'
 import InterestParamForm from '@components/forms/InterestParamForm'
 import ReqDataForm from '@components/forms/ReqDataForm'
 import HipotesisProveFormContext from '@context/hipotesisProveFormContext'
+import cornerCases from '@/utils/cornerCases'
 
 function MainForm () {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
@@ -25,6 +26,11 @@ function MainForm () {
   const [typeAnalisis, setTypeAnalisis] = useState(0)
   const [ns, setNs] = useState(0)
   const [formReady, setFormReady] = useState(false)
+
+  const isCorner = (inputCase) => {
+    return cornerCases.some((cornerCase) => inputCase === cornerCase)
+  }
+
   const handleSelectAnalisis = (ev) => {
     ev.preventDefault()
     const value = ev.target.value
@@ -73,7 +79,10 @@ function MainForm () {
   }, [conclusionData])
 
   useEffect(() => {
-    if (typeAnalisis !== '' && typeAnalisis === 3 && !isNaN(ns)) {
+    isCorner(hipotesisDefinition.apiEndPoint)
+    if (typeAnalisis !== '' && typeAnalisis === 3 && !isNaN(ns) && isCorner(hipotesisDefinition.apiEndPoint)) {
+      setFormData({ ...hipotesisDefinition.inputdata, ns })
+    } else if (typeAnalisis !== '' && typeAnalisis === 3 && !isNaN(ns)) {
       setFormData({ ...hipotesisDefinition.inputdata, ns: ns / 2 })
     } else if (typeAnalisis !== '' && !isNaN(ns)) {
       setFormData({ ...hipotesisDefinition.inputdata, ns })
