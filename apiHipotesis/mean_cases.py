@@ -44,3 +44,27 @@ def mean_unknown_dev_stand_t(
     )
 
     return {"criticPoint": z, "observedValue": est_p}
+
+
+def double_mean_variance_no_equal(
+    mean_1: float,
+    mean_2: float,
+    dev_stand_1: float,
+    dev_stand_2: float,
+    n: int,
+    n_2: int,
+    ns: float,
+):
+
+    z = abs(float(norm.ppf(ns)))
+    est_p: float = (mean_1 - mean_2) / sqrt((dev_stand_1 / n) + (dev_stand_2 / n_2))
+
+    return {"criticPoint": z, "observedValue": est_p}
+
+
+def double_mean_variance_no_equal_graph(
+    criticPoint: float, observedValue: float, analisisType: int
+):
+    image = graph_normal(criticPoint, observedValue, analisisType)
+
+    return {"graph": image}

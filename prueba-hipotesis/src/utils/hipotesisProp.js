@@ -132,6 +132,54 @@ const testHipotesis = {
               placeholder: 'Ingrese la Muestra'
             }
           }
+        },
+
+        {
+          name: 'Dos Medias Varianzas Conocidas No Iguales',
+          caseDefinition: '...',
+          image: 'double_mean_variance_no_equal.png',
+          endpoint: 'mean/doble_mean_variance_no_equal/',
+          reqData: {
+            mean_1: {
+              name: 'Media 1',
+              maininterest: 1,
+              type: 'number',
+              placeholder: 'Ingrese la Media 1 Ej. 497.3',
+              step: 0.1
+            },
+            mean_2: {
+              name: 'Media 2',
+              type: 'number',
+              placeholder: 'Ingrese la Media 2 Ej. 497.3',
+              step: 0.1
+            },
+
+            dev_stand_1:
+            {
+              name: 'Desviación Estandar 1',
+              type: 'number',
+              placeholder: 'Ingrese la Desvacíón Estandard 1'
+            },
+
+            dev_stand_2:
+            {
+              name: 'Desviación Estandar 1',
+              type: 'number',
+              placeholder: 'Ingrese la Desvacíón Estandard 2'
+            },
+            n: {
+              name: 'Muestra 2',
+              type: 'number',
+              min: 1,
+              placeholder: 'Ingrese la Muestra 1'
+            },
+            n_2: {
+              name: 'Muestra 2',
+              type: 'number',
+              min: 1,
+              placeholder: 'Ingrese la Muestra 2'
+            }
+          }
         }
       ]
     },

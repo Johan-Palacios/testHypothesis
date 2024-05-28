@@ -72,8 +72,30 @@ def read_dev_stand_chi(
 
 
 @app.get("/dev_stand/dev_stand_chi/graph")
-
 def read_dev_stand_chi_graph(
     criticPoint: float, observedValue: float, analisisType: int, n: int
 ):
     return dev_stand_chi_graph(criticPoint, observedValue, analisisType, n)
+
+
+@app.get("/mean/doble_mean_variance_no_equal/")
+def read_double_mean_variance_no_equal(
+    mean_1: float,
+    mean_2: float,
+    dev_stand_1: float,
+    dev_stand_2: float,
+    n: int,
+    n_2: int,
+    ns: float,
+):
+    return double_mean_variance_no_equal(
+        mean_1, mean_2, dev_stand_1, dev_stand_2, n, n_2, ns
+    )
+
+
+
+@app.get("/mean/doble_mean_variance_no_equal/graph/")
+def read_mean_variance_no_equal(
+    criticPoint: float, observedValue: float, analisisType: int
+):
+    return double_mean_variance_no_equal_graph(criticPoint, observedValue, analisisType)
