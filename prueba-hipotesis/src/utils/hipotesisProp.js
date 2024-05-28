@@ -142,7 +142,7 @@ const testHipotesis = {
           reqData: {
             mean_1: {
               name: 'Media 1',
-              maininterest: 1,
+              maininterest: 2,
               type: 'number',
               placeholder: 'Ingrese la Media 1 Ej. 497.3',
               step: 0.1

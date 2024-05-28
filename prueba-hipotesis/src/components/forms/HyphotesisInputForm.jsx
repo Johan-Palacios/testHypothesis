@@ -37,6 +37,11 @@ export const InputHyphotesis = ({ props, label, propertyInput }) => {
           if (props?.maininterest === 1) {
             updateHipotesisConclusion({ mainInterest: parseFloat(value) })
           }
+
+          if (props?.maininterest === 2) {
+            updateHipotesisConclusion({ mainInterest: 'μ₁' })
+          }
+
           updateHipotesisDefinition(
             {
               inputdata:
@@ -51,7 +56,10 @@ export const InputHyphotesis = ({ props, label, propertyInput }) => {
 
 InputHyphotesis.propTypes = {
   props: PropTypes.object.isRequired,
-  maininterest: PropTypes.number,
+  maininterest: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   label: PropTypes.string.isRequired,
   propertyInput: PropTypes.string.isRequired
 }

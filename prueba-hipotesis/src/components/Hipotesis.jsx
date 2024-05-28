@@ -10,6 +10,18 @@ const Hipotesis = () => {
   const [hipotesisInterestParam, setHipotesisInterestParam] = useState('')
   const [mainInterest, setMainInterest] = useState('')
   const [alternativeHipotesis, setAlternativeHipotesis] = useState('')
+  const [isStatic, setIsStatic] = useState(false)
+
+  const staticHipotesis = ['μ₁']
+
+  useEffect(() => {
+    if (mainInterest !== undefined) {
+      setIsStatic(staticHipotesis.some((hipotesis) => {
+        return mainInterest === hipotesis
+      }))
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mainInterest])
 
   useEffect(() => {
     setHipotesisInterestParam(hipotesisDefinition.interestParam[0])
@@ -35,7 +47,8 @@ const Hipotesis = () => {
 
   return (
     <Stack>
-      {hipotesisInterestParam !== '' && mainInterest !== '' && !isNaN(mainInterest)
+      {hipotesisInterestParam !== '' && mainInterest !== '' &&
+        (!isNaN(mainInterest) || isStatic)
 
         ? <>
           <Heading as='h4' size='md'>Hipotesis Nula:</Heading>
@@ -43,7 +56,8 @@ const Hipotesis = () => {
           {/* eslint-disable-next-line react/jsx-indent */}
           </>
         : <></>}
-      {hipotesisInterestParam !== '' && mainInterest !== '' && alternativeHipotesis !== '' && !isNaN(mainInterest)
+      {hipotesisInterestParam !== '' && mainInterest !== '' && alternativeHipotesis !== '' &&
+        (!isNaN(mainInterest) || isStatic)
         ? <>
 
           <Heading as='h4' size='md'>Hipotesis Altenativa:</Heading>
