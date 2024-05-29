@@ -41,8 +41,7 @@ const Conclusion = () => {
     if (conclusion.analisisType === 3 && (conclusion.observedValue > conclusion.criticPoint) &&
       isCorner(hipotesisDefinition.apiEndPoint)) {
       setAlternativeHipotesis(true)
-    }
-    if (conclusion.analisisType === 3 && ((conclusion.observedValue > conclusion.criticPoint) ||
+    } else if (conclusion.analisisType === 3 && ((conclusion.observedValue > conclusion.criticPoint) ||
       (conclusion.observedValue < conclusion.criticPoint * -1))) {
       setAlternativeHipotesis(true)
     } else if (conclusion.analisisType === 2 && (conclusion.observedValue > conclusion.criticPoint)) {

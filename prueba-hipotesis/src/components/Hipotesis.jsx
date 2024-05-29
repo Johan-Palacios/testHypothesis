@@ -34,14 +34,12 @@ const Hipotesis = () => {
   useEffect(() => {
     if (hipotesisConclusion.analisisType === 1) {
       setAlternativeHipotesis('<')
-    }
-
-    if (hipotesisConclusion.analisisType === 2) {
+    } else if (hipotesisConclusion.analisisType === 2) {
       setAlternativeHipotesis('>')
-    }
-
-    if (hipotesisConclusion.analisisType === 3) {
+    } else if (hipotesisConclusion.analisisType === 3) {
       setAlternativeHipotesis('!=')
+    } else {
+      setAlternativeHipotesis('')
     }
   }, [hipotesisConclusion])
 
