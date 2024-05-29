@@ -13,9 +13,14 @@ def graph_normal(
 
     z_value = critic_point
 
-    if observed_value > 5 or observed_value < -5:
-        x_inf_lim = -1 - int(observed_value)
+    if observed_value > 5:
+        x_inf_lim = - 1 - int(observed_value)
         x_sup_lim = 1 + int(observed_value)
+        x = np.linspace(x_inf_lim, x_sup_lim, 1000)
+
+    elif observed_value < -5:
+        x_inf_lim = -1 + int(observed_value)
+        x_sup_lim = 1 + abs(int(observed_value))
         x = np.linspace(x_inf_lim, x_sup_lim, 1000)
     else:
         x = np.linspace(-5.5, 5.5, 1000)
@@ -29,7 +34,7 @@ def graph_normal(
 
     plt.annotate(
         f"Valor\nObservado = {round(observed_value, 4)}",
-        xy=(observed_value, float(norm.pdf(observed_value))),
+        xy=(float(observed_value), float(norm.pdf(observed_value))),
         xytext=(observed_value, 0.2),
         arrowprops=dict(facecolor="black", arrowstyle="->"),
     )
@@ -177,9 +182,13 @@ def graph_t_student(
 
     z_value = critic_point
 
-    if observed_value > 5 or observed_value < -5:
+    if observed_value > 5:
         x_inf_lim = -1 - int(observed_value)
         x_sup_lim = 1 + int(observed_value)
+        x = np.linspace(x_inf_lim, x_sup_lim, 1000)
+    elif observed_value < -5:
+        x_inf_lim = -1 + int(observed_value)
+        x_sup_lim = 1 + abs(int(observed_value))
         x = np.linspace(x_inf_lim, x_sup_lim, 1000)
     else:
         x = np.linspace(-5.5, 5.5, 1000)
