@@ -1,4 +1,4 @@
-import { Container, Text, Card, CardBody, CardHeader, Heading, Stack, Image, Alert, IconButton } from '@chakra-ui/react'
+import { Container, Text, Card, CardBody, CardHeader, Heading, Stack, Alert, IconButton } from '@chakra-ui/react'
 import { CopyIcon } from '@chakra-ui/icons'
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
@@ -6,6 +6,7 @@ import HipotesisConclusionContext from '@context/hipotesisConcusionContext'
 import Hipotesis from '@components/Hipotesis'
 import HipotesisAppContext from '@/context/hipotesisAppContext'
 import cornerCases from '@/utils/cornerCases'
+import ExpandableImage from './ExpandableImage'
 
 const Conclusion = () => {
   const { hipotesisDefinition } = useContext(HipotesisAppContext)
@@ -144,7 +145,11 @@ const Conclusion = () => {
               {textConclusion}
             </Alert>
             <Text />
-            {graph.graph !== undefined ? <Image src={`data:image/png;base64, ${graph.graph}`} /> : <></>}
+            {graph.graph !== undefined
+              ? <ExpandableImage
+                  src={`data:image/png;base64, ${graph.graph}`} alt='Distribución Gráfica'
+                />
+              : <></>}
 
           </Stack>
         </CardBody>
