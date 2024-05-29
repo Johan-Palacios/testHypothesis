@@ -26,7 +26,7 @@ const testHipotesis = {
             {
               name: 'Desviación Estandar',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Estandard'
+              placeholder: 'Ingrese la Desvacíón Estandar'
             },
             n: {
               name: 'Muestra',
@@ -59,7 +59,7 @@ const testHipotesis = {
             {
               name: 'Desviación Estandar Muestral',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Estandard'
+              placeholder: 'Ingrese la Desvacíón Estandar'
             },
             n: {
               name: 'Muestra',
@@ -91,7 +91,7 @@ const testHipotesis = {
             {
               name: 'Desviación Estandar',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Estandard'
+              placeholder: 'Ingrese la Desvacíón Estandar'
             },
             n: {
               name: 'Muestra',
@@ -123,7 +123,7 @@ const testHipotesis = {
             {
               name: 'Desviación Estandar Muestral',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Estandard Muestral'
+              placeholder: 'Ingrese la Desvacíón Estandar Muestral'
             },
             n: {
               name: 'Muestra',
@@ -158,14 +158,14 @@ const testHipotesis = {
             {
               name: 'Desviación Estandar 1',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Estandard 1'
+              placeholder: 'Ingrese la Desvacíón Estandar 1'
             },
 
             dev_stand_2:
             {
               name: 'Desviación Estandar 1',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Estandard 2'
+              placeholder: 'Ingrese la Desvacíón Estandar 2'
             },
             n: {
               name: 'Muestra 2',
