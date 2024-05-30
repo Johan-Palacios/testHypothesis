@@ -128,7 +128,7 @@ function MainForm () {
                 value={ns}
                 max={0.99}
                 type='number'
-                placeholder='Ingrese Nivel de Significancia'
+                placeholder='Ingrese Nivel de Significancia Ej. 0.05'
                 required
                 onWheel={(ev) => ev.target.blur()}
                 onChange={(ev) => handleChangeNs(ev)}
