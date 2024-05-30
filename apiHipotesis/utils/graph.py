@@ -35,7 +35,7 @@ def graph_normal(
     plt.annotate(
         f"Valor\nObservado = {round(observed_value, 4)}",
         xy=(float(observed_value), float(norm.pdf(observed_value))),
-        xytext=(observed_value, 0.2),
+        xytext=(observed_value, 0.22),
         arrowprops=dict(facecolor="black", arrowstyle="->"),
     )
 

@@ -63,6 +63,13 @@ def read_proportion_bernoulli_n(
     return proportion_bernoulli_n(proportion_population, proportion_sample, ns, n)
 
 
+@app.get("/proportion/proportion_bernoulli_n/graph/")
+def read_proportion_bernoulli_n_graph(
+    criticPoint: float, observedValue: float, analisisType: int
+):
+    return mean_know_dev_stand_graph(criticPoint, observedValue, analisisType)
+
+
 # Dev Stand
 @app.get("/dev_stand/dev_stand_chi/")
 def read_dev_stand_chi(
