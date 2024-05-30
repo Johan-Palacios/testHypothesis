@@ -26,13 +26,13 @@ const testHipotesis = {
             {
               name: 'Desviación Estandar',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Estandar'
+              placeholder: 'Ingrese la Desvacíón Estandar Ej. 5'
             },
             n: {
               name: 'Muestra',
               type: 'number',
               min: 1,
-              placeholder: 'Ingrese la Muestra'
+              placeholder: 'Ingrese la Muestra Ej. 100'
             }
           }
         },
@@ -59,13 +59,13 @@ const testHipotesis = {
             {
               name: 'Desviación Estandar Muestral',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Estandar'
+              placeholder: 'Ingrese la Desvacíón Estandar Ej. 5'
             },
             n: {
               name: 'Muestra',
               type: 'number',
               min: 1,
-              placeholder: 'Ingrese la Muestra'
+              placeholder: 'Ingrese la Muestra Ej. 100'
             }
           }
         },
@@ -91,13 +91,13 @@ const testHipotesis = {
             {
               name: 'Desviación Estandar',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Estandar'
+              placeholder: 'Ingrese la Desvacíón Estandar Ej. 5'
             },
             n: {
               name: 'Muestra',
               type: 'number',
               min: 1,
-              placeholder: 'Ingrese la Muestra'
+              placeholder: 'Ingrese la Muestra Ej. 100'
             }
           }
         },
@@ -123,13 +123,13 @@ const testHipotesis = {
             {
               name: 'Desviación Estandar Muestral',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Estandar Muestral'
+              placeholder: 'Ingrese la Desvacíón Estandar Muestral Ej. 5'
             },
             n: {
               name: 'Muestra',
               type: 'number',
               min: 1,
-              placeholder: 'Ingrese la Muestra'
+              placeholder: 'Ingrese la Muestra Ej. 100'
             }
           }
         },
@@ -158,26 +158,26 @@ const testHipotesis = {
             {
               name: 'Desviación Estandar 1',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Estandar 1'
+              placeholder: 'Ingrese la Desvacíón Estandar 1 Ej. 5'
             },
 
             dev_stand_2:
             {
               name: 'Desviación Estandar 1',
               type: 'number',
-              placeholder: 'Ingrese la Desvacíón Estandar 2'
+              placeholder: 'Ingrese la Desvacíón Estandar 2 Ej. 6'
             },
             n: {
               name: 'Muestra 2',
               type: 'number',
               min: 1,
-              placeholder: 'Ingrese la Muestra 1'
+              placeholder: 'Ingrese la Muestra 1 Ej. 100'
             },
             n_2: {
               name: 'Muestra 2',
               type: 'number',
               min: 1,
-              placeholder: 'Ingrese la Muestra 2'
+              placeholder: 'Ingrese la Muestra 2 Ej.120'
             }
           }
         }
@@ -214,7 +214,7 @@ const testHipotesis = {
               name: 'Muestra',
               type: 'number',
               min: 1,
-              placeholder: 'Ingrese la Muestra'
+              placeholder: 'Ingrese la Muestra Ej. 100'
             }
           }
 
@@ -245,7 +245,7 @@ const testHipotesis = {
             n: {
               name: 'Muestra',
               type: 'number',
-              placeholder: 'Ingrese la Muestra'
+              placeholder: 'Ingrese la Muestra Ej. 11'
             }
           }
         }
