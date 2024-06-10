@@ -92,7 +92,6 @@ const Conclusion = () => {
       analisisType: conclusion.analisisType,
       n: hipotesisDefinition.inputdata.n
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [conclusion.observedValue, conclusion.criticPoint, conclusion.analisisType, hipotesisDefinition.inputdata.n])
 
   useEffect(() => {
