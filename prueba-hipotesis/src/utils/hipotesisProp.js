@@ -223,7 +223,7 @@ const testHipotesis = {
     },
     {
       type: 'standev',
-      name: 'σ² ( Desviación Estándar )',
+      name: 'σ² ( Varianza )',
       cases: [
         {
           name: 'x ~ N(μ, σ)',
