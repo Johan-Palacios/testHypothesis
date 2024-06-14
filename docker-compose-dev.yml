@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  backend_hip:
+    container_name: testHypothesis_backend_hip
+    build:
+      context: ./apiHipotesis
+      dockerfile: ./dev.Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./apiHipotesis:/home/app/backend
+  frontend_hip:
+    container_name: testHypothesis_frontend_hip
+    build:
+      context: ./prueba-hipotesis
+      dockerfile: ./dev.Dockerfile
+    ports:
+      - "5173:5173"
+    links:
+      - backend_hip
+    volumes:
+      - ./prueba-hipotesis:/home/app/frontend
+    depends_on:
+      - backend_hip
