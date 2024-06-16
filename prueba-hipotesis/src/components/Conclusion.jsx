@@ -25,7 +25,7 @@ const Conclusion = () => {
   }
 
   const fetchGraphData = async () => {
-    await axios.get(`http://localhost:8000/${hipotesisDefinition.apiEndPoint}graph`, {
+    await axios.get(`/api/${hipotesisDefinition.apiEndPoint}graph/`, {
       params,
       headers: {
         Accept: 'application/json'

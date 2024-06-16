@@ -62,7 +62,7 @@ function MainForm () {
   const handleSubmit = async (ev) => {
     ev.preventDefault()
 
-    await axios.get(`http://localhost:8000/${hipotesisDefinition.apiEndPoint}`, {
+    await axios.get(`/api/${hipotesisDefinition.apiEndPoint}`, {
       params: formData,
       headers: {
         Accept: 'application/json'

@@ -78,7 +78,7 @@ def read_dev_stand_chi(
     return dev_stand_chi(dev_stand_population, dev_stand_sample, ns, n)
 
 
-@app.get("/dev_stand/dev_stand_chi/graph")
+@app.get("/dev_stand/dev_stand_chi/graph/")
 def read_dev_stand_chi_graph(
     criticPoint: float, observedValue: float, analisisType: int, n: int
 ):
