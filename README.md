@@ -8,13 +8,13 @@
 <hr>
 
 <h4 align="center">
-  <a href=" #requisitos">Instalación </a>
+  <a href="#%EF%B8%8F-requisitos">Instalación </a>
   ·
-  <a href="#características">Características </a>
+  <a href="#-características">Características </a>
   ·
-  <a href="#requisitos">Requisitos </a>
+  <a href="#%EF%B8%8F-requisitos">Requisitos </a>
   ·
-  <a href="##docs">Docs</a>
+  <a href="#docs-%EF%B8%8F">Docs</a>
 </h4>
 
 <p align="center">
