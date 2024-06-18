@@ -3,12 +3,26 @@ from proportion_cases import *
 from mean_cases import *
 from dev_stand_cases import *
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import Request
 
 
-app = FastAPI()
+description = """
+This is a fancy API built with /Esta es una API construida con [FastAPI🚀](https://fastapi.tiangolo.com/)
+
+📝 [Source Code/Código Fuente](https://github.com/Johan-Palacios/testHypothesis/tree/master/apiHipotesis)
+🐞 [Issues/Problemas](https://github.com/Johan-Palacios/testHypothesis/issues)
+"""
+
+app = FastAPI(
+    title="Proof of Hypothesis/Prueba De Hipótesis API",
+    description=description,
+    version="1.0.0",
+    docs_url="/",
+    root_path="",
+)
 
 origins = [
-    "http://localhost:5173",
+    "*"
 ]
 
 app.add_middleware(
@@ -98,7 +112,6 @@ def read_double_mean_variance_no_equal(
     return double_mean_variance_no_equal(
         mean_1, mean_2, dev_stand_1, dev_stand_2, n, n_2, ns
     )
-
 
 
 @app.get("/mean/doble_mean_variance_no_equal/graph/")
