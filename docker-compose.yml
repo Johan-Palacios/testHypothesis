@@ -1,0 +1,30 @@
+name: test_hypothesis_prod
+services:
+  backend_hip_prod:
+    container_name: testHypothesis_backend_hip_prod
+    build:
+      context: ./apiHipotesis
+      dockerfile: ./Dockerfile
+    ports:
+      - "8000:80"
+    restart: always
+  frontend_hip_prod:
+    container_name: testHypothesis_frontend_hip_prod
+    build:
+      context: ./prueba-hipotesis
+      dockerfile: ./Dockerfile
+    links:
+      - backend_hip_prod
+    depends_on:
+      - backend_hip_prod
+  nginx_server_prod:
+    container_name: testHypotesis_nginx_server_prod
+    depends_on:
+      - backend_hip_prod
+      - frontend_hip_prod
+    restart: always
+    build:
+      context: ./nginx/prodNginx
+      dockerfile: ./Dockerfile
+    ports:
+      - "80:80"

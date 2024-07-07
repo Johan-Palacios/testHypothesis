@@ -13,5 +13,17 @@ export default defineConfig({
       '@utils': path.resolve(__dirname, './src/utils'),
       '@hooks': path.resolve(__dirname, './src/hooks')
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks (id) {
+          if (id.includes('node_modules')) {
+            return id.toString().split('node_modules/')[1].split('/')[0].toString()
+          }
+        }
+      }
+    }
   }
+
 })
