@@ -65,13 +65,34 @@ docker compose -f docker-compose-dev.yml up
 ```
 
 #### Puertos de los Servidores
-- Nginx (Usar este para desarrollo por el Reverse Proxy)
+- Nginx (Usar este para desarrollo por el Proxy)
 ```bash
 http://localhost:3000
 ```
-- Vite (No usar este para desarrollo por el Reverse Proxy de Nginx)
+- Vite (No usar este para desarrollo por el Proxy de Nginx)
 ```bash
 http://localhost:5173
+```
+
+- FastAPI
+```bash
+http://localhost:8000
+```
+
+### Entorno de Producción
+
+Levantar Servidores 
+- Nginx
+- Fast API (Uvicorn)
+
+```bash
+docker compose up --build
+```
+
+#### Puertos de los Servidores
+- Nginx (Usar este para desarrollo por el Proxy)
+```bash
+http://localhost
 ```
 
 - FastAPI
