@@ -1,4 +1,4 @@
-version: "3.9"
+name: test_hypothesis_dev
 services:
   backend_hip:
     container_name: testHypothesis_backend_hip
