@@ -1,5 +1,7 @@
 __pycache__
 *.pyc
+*.pyo
+*.pyd
 .git
 .gitignore
 Dockerfile
@@ -7,3 +9,4 @@ dev.Dockerfile
 docker-compose.yml
 README.md
 pyproject.toml
+.editorconfig

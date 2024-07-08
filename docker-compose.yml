@@ -1,6 +1,7 @@
 name: test_hypothesis_prod
 services:
   backend_hip_prod:
+    platform: linux/x86_64
     container_name: testHypothesis_backend_hip_prod
     build:
       context: ./apiHipotesis
